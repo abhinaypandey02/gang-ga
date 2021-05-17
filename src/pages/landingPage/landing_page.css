@@ -2,12 +2,14 @@
     background: #0F2027;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border:none !important;
     
 }
 #section2{
     background: #0F2027;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #010303, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top,#010303,#0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border:none !important;
     
 }
 .form-control::-webkit-input-placeholder {
@@ -22,6 +24,7 @@
     background: transparent;  /* fallback for old browsers */;
     background-size: 200%;
     border-radius: 20%;
+    border:none !important;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
  
     
