@@ -2,7 +2,6 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import NavigationBar from "../../components/navigationBar/navigation_bar";
 import { Button } from "react-bootstrap";
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -10,11 +9,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
+import clsx from 'clsx';
+import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import ListItemText from '@material-ui/core/ListItemText';
+import Checkbox from '@material-ui/core/Checkbox';
+import Chip from '@material-ui/core/Chip';
 
 export default function AllGymsPage() {
 
-    const useStyles = makeStyles({
+    const useStyles1 = makeStyles({
         root: {
             width: 400,
         },
@@ -24,12 +28,14 @@ export default function AllGymsPage() {
         return `${value}°C`;
     }
 
-    const classes = useStyles();
+    const classes = useStyles1();
     const [value, setValue] = React.useState<number[]>([0, 37]);
 
-    const handleChange = (event: any, newValue: number | number[]) => {
+    const handleChange1 = (event: any, newValue: number | number[]) => {
         setValue(newValue as number[]);
     };
+
+
 
     return (
         <div className="div">
@@ -64,15 +70,15 @@ export default function AllGymsPage() {
                              </Typography>
                             <Slider
                                 value={value}
-                                onChange={handleChange}
+                                onChange={handleChange1}
                                 valueLabelDisplay="auto"
                                 aria-labelledby="range-slider"
                                 getAriaValueText={valuetext}
                             />
                         </div>
                     </div>
-                    <div className="col-3 m-2 bg-light">
-                  
+                    <div className="col-3 m-2 bg-transparent border-2 rounded border-light border-5">
+            
                     </div>
                     <div className="col-3 m-2  bg-light">21111</div>
                     <div className="col-3 m-2 bg-light">21111</div>
