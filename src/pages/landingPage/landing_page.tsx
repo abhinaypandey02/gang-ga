@@ -6,7 +6,7 @@ export default function LandingPage() {
     return (
         <div className="d-flex flex-grow-1 flex-column">
         
-            <div className="container-fluid d-flex flex-column min-vh-100 text-light" id='row1'>
+            <div className="container-fluid d-flex flex-column min-vh-100 text-light" id='section1'>
                 <div className="row"><NavigationBar/></div>
             
                 <div className="row d-flex flex-grow-1 align-content-center justify-content-center" >
@@ -18,55 +18,120 @@ export default function LandingPage() {
                         </h1>
             
                           
-                   <div className="diov d-flex  mx-auto w-50">
-                       <input className="form-control py-2 border-right " type="text" placeholder="Search for the best GYM near you" aria-label="Search" />
-                        <Button className='mx-auto' variant='outline-light '>
+              
+                       <input className="form-control px-3 py-2 rounded-pill w-50 mx-auto bg-transparent text-light " type="text" placeholder="Search for the best GYM near you" aria-label="Search" />
+                        <br/>
+                        <Button className='mx-auto  rounded-pill ' variant='light '>
                            Go
                         </Button>
-                    </div>
+                    
                         
             
                     </div>
                     
                 </div>
             </div>
-            <br/>
-            <div className="container-fluid min-vh-100">
-                <div className="row  bg-danger">
-                    <div className="col-md-4 d-flex justify-content-center bg-info"><Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card></div>
-                    <div className="col-md-4 d-flex justify-content-center bg-info"><Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card></div>
-                    <div className="col-md-4 d-flex justify-content-center bg-info "><Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card></div>
-
+      
+            <div className="container-fluid min-vh-100" id='section2'>
+                <div className="container text-center text-light">
+                    <h1>From over 54+ States to choose from</h1>
+                    <br/>
+                    <div className="row d-flex justify-content-around p-3">
+                            <div className="col-md-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div className="row d-flex justify-content-around mt-md-3 p-3">
+                            <div className="col-md-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div className="row d-flex justify-content-around mt-md-3 p-3">
+                            <div className="col-md-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Card title</h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,36 @@
-#row1{
-    background-image: url('https://i.pinimg.com/originals/a9/6e/f0/a96ef0696b4f958a717b051258721711.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
+#section1{
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+#section2{
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #010303, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top,#010303,#0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+.form-control::-webkit-input-placeholder {
+    color: white;
+  }
+
+.card{
+    margin-top: 1rem;;
+    min-height: 20rem ;
+    min-width: 20rem;
+    transition: all ease-in-out .4s ;
+    background: transparent;  /* fallback for old browsers */;
+    background-size: 200%;
+    border-radius: 20%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+ 
+    
+}
+.card:hover{
+    transform: translateY(-10px);
+    background: #66adcc; 
+ 
+
+
+    
 }
