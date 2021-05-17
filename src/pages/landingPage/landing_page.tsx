@@ -1,34 +1,33 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import NavigationBar from '../../components/navigationBar/navigation_bar';
 import './landing_page.css';
 export default function LandingPage() {
     return (
         <div className="d-flex flex-grow-1 flex-column">
-            <div className="container-fluid d-flex min-vh-100 text-light">
-                <div className="row flex-grow-1" id='row1'>
-                    <div className="col-md-6 d-flex text-start ps-5 text-wrap justify-content-center flex-column">
-                        <h1 className='display-4'>
+        
+            <div className="container-fluid d-flex flex-column min-vh-100 text-light" id='row1'>
+                <div className="row"><NavigationBar/></div>
+            
+                <div className="row d-flex flex-grow-1 align-content-center justify-content-center" >
+                    <div className="col-12 text-center">
+                        <h1 className='display-4 mx-auto mb-5'>
                             <strong>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Eius id sunt ut officiis natus deserunt culpa accusamus.
+                                Find the best gyms near you in no time. 
                     </strong>
                         </h1>
-                        <div className="x">
-                            <Button className='w-25 m-3 rounded-pill ' size='lg' variant='outline-light'>
-                                Learn More
-                </Button>
-                            <Button className='w-25 m-3 rounded-pill' size='lg' variant='dark '>
-                                Contact Us
-                </Button>
-                        </div>
+            
+                          
+                   <div className="diov d-flex  mx-auto w-50">
+                       <input className="form-control py-2 border-right " type="text" placeholder="Search for the best GYM near you" aria-label="Search" />
+                        <Button className='mx-auto' variant='outline-light '>
+                           Go
+                        </Button>
                     </div>
-                    <div className="col-md-6  d-flex text-start ps-5 text-wrap justify-content-center align-items-center flex-row ">
-
-                        <input className="form-control w-75 rounded-pill" type="text" placeholder="Search for the best GYM near you" aria-label="Search" />
-                        <Button className=' m-3 rounded-pill' variant='outline-light '>
-                            Search Now
-                </Button>
+                        
+            
                     </div>
+                    
                 </div>
             </div>
             <br/>
