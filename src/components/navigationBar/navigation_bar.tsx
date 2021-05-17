@@ -5,7 +5,7 @@ import { Navbar, Nav, Button, Form, FormControl, NavDropdown } from "react-boots
 export default function NavigationBar() {
   return (
     <Navbar id='nav1' className='pt-md-5 px-md-5' bg="dark" variant='dark' expand="lg">
-      <Navbar.Brand href="#home" >GYM KA OYO</Navbar.Brand>
+      <Navbar.Brand href="#home" >Gang-ga</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse  id="basic-navbar-nav">
         <Nav className='ms-auto'>
