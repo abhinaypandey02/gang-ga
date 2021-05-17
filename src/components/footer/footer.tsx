@@ -1,6 +1,6 @@
 export default function Footer(){
     return(
-        <footer className="text-light" style={{backgroundColor: '#010303'}}>
+        <footer className="text-light" >
         <div className="row p-4 pt-5 m-0">
        <hr/>
           <div className="col-6 ">

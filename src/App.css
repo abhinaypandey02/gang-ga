@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+#maindiv{
+    background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #010303);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2C5364, #203A43, #010303); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
