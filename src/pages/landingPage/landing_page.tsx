@@ -4,7 +4,7 @@ import NavigationBar from '../../components/navigationBar/navigation_bar';
 import './landing_page.css';
 export default function LandingPage() {
     return (
-        <div className="d-flex flex-grow-1 flex-column">
+        <div className="1">
         
             <div className="container-fluid d-flex flex-column min-vh-100 text-light" id='section1'>
                 <div className="row"><NavigationBar/></div>

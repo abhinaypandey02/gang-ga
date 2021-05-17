@@ -1,15 +1,13 @@
 import './App.css';
+import Footer from './components/footer/footer';
 import NavigationBar from './components/navigationBar/navigation_bar';
 import LandingPage from './pages/landingPage/landing_page';
 
 function App() {
   return (
     <div className="App">
-      <div className="min-vh-100 d-flex flex-column">
-          <div className="flex-grow-1 d-flex">
-            <LandingPage/>
-          </div>
-      </div>
+      <LandingPage/>
+      <Footer/>
     </div>
   );
 }
