@@ -1,20 +1,12 @@
 import React from "react";
+import './allygyms_page.css';
 import { Navbar, Nav } from "react-bootstrap";
-import NavigationBar from "../../components/navigationBar/navigation_bar";
-import { Button } from "react-bootstrap";
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import clsx from 'clsx';
-import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
+import { createStyles, makeStyles, useTheme, Theme  } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import StarIcon from '@material-ui/icons/Star';
 
 export default function AllGymsPage() {
 
@@ -39,12 +31,12 @@ export default function AllGymsPage() {
 
     return (
         <div className="div">
-            <Navbar id='nav1' sticky="top" className='pt-md-5 px-md-5 d-flex' bg="transparent" variant='dark' expand="lg">
-                <Navbar.Brand href="#home" className='d-none	d-sm-none d-md-block'>Gang-ga</Navbar.Brand>
-                <div className="d-flex w-75 ms-auto ">
+            <Navbar id='nav1' sticky="top" className='my-5 px-5 d-flex' bg="transparent" variant='dark' expand="lg">
+                <Navbar.Brand href="#home" className='d-none d-sm-none d-md-block'>Gang-ga</Navbar.Brand>
+                <div className="d-flex w-75">
 
-                    <input className="form-control m-0 px-md-3 py-2 rounded-pill w-100 bg-transparent text-light " type="text" placeholder="Search for the best GYM near you" aria-label="Search" />
-                    <Button className='rounded-pill ' variant='light '>
+                    <input className="form-control px-md-3 py-2 rounded-pill w-100 bg-transparent text-light " type="text" placeholder="Search for the best GYM near you" aria-label="Search" />
+                    <Button className='rounded-pill ' variant='contained'>
                         Go
                         </Button>
                 </div>
@@ -63,7 +55,7 @@ export default function AllGymsPage() {
             </Navbar>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-3 m-2 bg-light">
+                    <div className="col-md-3 p-3 bg-light">
                         <div className={classes.root}>
                             <Typography id="range-slider" gutterBottom>
                                 Price Range
@@ -77,16 +69,49 @@ export default function AllGymsPage() {
                             />
                         </div>
                     </div>
-                    <div className="col-3 m-2 bg-transparent border-2 rounded border-light border-5">
-            
+                    <div className="col-md-3 m-1 bg-transparent border-2 rounded border-light border-5">
                     </div>
                     <div className="col-3 m-2  bg-light">21111</div>
                     <div className="col-3 m-2 bg-light">21111</div>
                     <div className="col-3 m-2 bg-light">21111</div>
                     <div className="col-3 m-2 bg-light">21111</div>
                 </div>
-                <div className="container">
-                    <div className="row">
+                <div className="container d-flex justify-content-center ">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-12">
+                        <div className="card mt-4 rounded-0" style={{maxWidth: "1000px"}}>
+                            <div className="row g-0">
+                                <div className="col-md-4 p-4">
+                                    <img className='img-fluid' src='https://images.unsplash.com/photo-1540496905036-5937c10647cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'/>
+                                </div>
+                                <div className="col-md-8">
+                                <div className="card-body text-start">
+                                    <h4 className="card-title"><strong>Card title</strong></h4>
+                                    <h6 className="text-muted">Random subtitle whi9ch includes the address</h6>
+                                    <br/>
+                                    <span className="badge bg-success py-auto"><h6 className='py-auto my-auto'>4.5<StarIcon fontSize='small'/> </h6> </span>
+                                    <br/><br/>
+                                    <CheckCircleOutlineIcon fontSize="small"/>XYZ yes <CheckCircleOutlineIcon fontSize="small"/>XYZ yes <CheckCircleOutlineIcon fontSize="small"/>XYZ yes
+                                    <br/><br/>
+                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                                   
+                                    <p className='text-danger h3 strong'>$32189</p>
+                                    <br/>
+                                    <Button variant="outlined" className='m-2' color="primary">
+                                        VIEW DETAILS
+                                    </Button>
+                                    <Button variant="contained" className='m-2' color="primary">
+                                        BOOK NOW
+                                    </Button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        
+           
+
 
                     </div>
                 </div>

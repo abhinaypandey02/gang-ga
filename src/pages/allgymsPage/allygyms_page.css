@@ -1,0 +1,12 @@
+.card{
+    background: #abbaab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffffff, #b0d5e6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffffff, #b0c1e6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: none !important;
+    transition: all 500ms ease-in-out;
+    
+
+}
+.card:hover{
+    transform:translateY(-5px);
+}
