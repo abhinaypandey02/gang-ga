@@ -12,7 +12,7 @@ export default function AllGymsPage() {
 
     const useStyles1 = makeStyles({
         root: {
-            width: 400,
+            maxWidth: 400,
         },
     });
 
@@ -55,7 +55,7 @@ export default function AllGymsPage() {
             </Navbar>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-3 p-3 bg-light">
+                    <div className="col-md-3 p-3 m-lg-3 text-start" id='filterbox'>
                         <div className={classes.root}>
                             <Typography id="range-slider" gutterBottom>
                                 Price Range
@@ -69,12 +69,35 @@ export default function AllGymsPage() {
                             />
                         </div>
                     </div>
-                    <div className="col-md-3 m-1 bg-transparent border-2 rounded border-light border-5">
+                    <div className="col-md-3 p-3 m-lg-3 text-start" id='filterbox'>
+                        <div className={classes.root}>
+                            <Typography id="range-slider" gutterBottom>
+                                Price Range
+                             </Typography>
+                            <Slider
+                                value={value}
+                                onChange={handleChange1}
+                                valueLabelDisplay="auto"
+                                aria-labelledby="range-slider"
+                                getAriaValueText={valuetext}
+                            />
+                        </div>
                     </div>
-                    <div className="col-3 m-2  bg-light">21111</div>
-                    <div className="col-3 m-2 bg-light">21111</div>
-                    <div className="col-3 m-2 bg-light">21111</div>
-                    <div className="col-3 m-2 bg-light">21111</div>
+                    <div className="col-md-3 p-3 m-lg-3 text-start" id='filterbox'>
+                        <div className={classes.root}>
+                            <Typography id="range-slider" gutterBottom>
+                                Price Range
+                             </Typography>
+                            <Slider
+                                value={value}
+                                onChange={handleChange1}
+                                valueLabelDisplay="auto"
+                                aria-labelledby="range-slider"
+                                getAriaValueText={valuetext}
+                            />
+                        </div>
+                    </div>
+                 
                 </div>
                 <div className="container d-flex justify-content-center ">
                     <div className="row d-flex justify-content-center">
