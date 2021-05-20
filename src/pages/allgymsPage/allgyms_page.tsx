@@ -7,6 +7,9 @@ import { createStyles, makeStyles, useTheme, Theme  } from '@material-ui/core/st
 import Button from '@material-ui/core/Button';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import StarIcon from '@material-ui/icons/Star';
+import MultipleSelect from "../../components/materialuiComponents/multipleSelect/multipleselect";
+import SimpleSelect from "../../components/materialuiComponents/sortBy/sortby";
+
 
 export default function AllGymsPage() {
 
@@ -70,32 +73,10 @@ export default function AllGymsPage() {
                         </div>
                     </div>
                     <div className="col-md-3 p-3 m-lg-3 text-start" id='filterbox'>
-                        <div className={classes.root}>
-                            <Typography id="range-slider" gutterBottom>
-                                Price Range
-                             </Typography>
-                            <Slider
-                                value={value}
-                                onChange={handleChange1}
-                                valueLabelDisplay="auto"
-                                aria-labelledby="range-slider"
-                                getAriaValueText={valuetext}
-                            />
-                        </div>
+                    <MultipleSelect/>
                     </div>
                     <div className="col-md-3 p-3 m-lg-3 text-start" id='filterbox'>
-                        <div className={classes.root}>
-                            <Typography id="range-slider" gutterBottom>
-                                Price Range
-                             </Typography>
-                            <Slider
-                                value={value}
-                                onChange={handleChange1}
-                                valueLabelDisplay="auto"
-                                aria-labelledby="range-slider"
-                                getAriaValueText={valuetext}
-                            />
-                        </div>
+                        <SimpleSelect/>
                     </div>
                  
                 </div>
