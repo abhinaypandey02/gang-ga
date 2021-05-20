@@ -9,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <div className="d-flex flex-column" id='maindiv'>
+        <NavigationBar/>
         <HashRouter>
           <Switch>
             <Route path="/"><LandingPage/></Route>
