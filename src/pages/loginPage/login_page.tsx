@@ -10,6 +10,7 @@ export default function LoginPage(){
             <NavigationBar/>
             <h1 className='display-3 text-light m-3'>Login</h1>
             <div className="container d-flex flex-column">
+                <div className="col-md-7 mx-auto">
             <div className="card text-start mx-auto" id='scard'>
                 <div className="row g-0">
                  
@@ -33,6 +34,7 @@ export default function LoginPage(){
                   </div>
                 </div>
              
+              </div>
               </div>
               <h6 className='text-light mx-auto my-2'>Not a Member?<Button variant="link">Signup</Button>here</h6>
               

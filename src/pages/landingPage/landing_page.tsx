@@ -58,7 +58,7 @@ export default function LandingPage() {
                                 </div>
                             </div>
                             <div className="col-lg-3  p-3">
-                                <div className="card">
+                                <div className="card" id='lcard'>
                                     <div className="card-body">
                                         <h5 className="card-title">Card title</h5>
                                         <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
