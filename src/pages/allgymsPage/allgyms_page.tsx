@@ -57,7 +57,7 @@ export default function AllGymsPage() {
                 </Navbar.Collapse>
             </Navbar>
             <div className="container-fluid">
-                <div className="row">
+                <div className="row d-flex justify-content-center">
                     <div className="col-md-3 p-3 m-lg-3 text-start" id='filterbox'>
                         <div className={classes.root}>
                             <Typography id="range-slider" gutterBottom>

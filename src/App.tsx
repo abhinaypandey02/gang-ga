@@ -9,10 +9,9 @@ function App() {
   return (
     <div className="App">
       <div className="d-flex flex-column" id='maindiv'>
-        <NavigationBar/>
         <HashRouter>
           <Switch>
-            <Route path="/"><LandingPage/></Route>
+            <Route exact={true} path="/"><LandingPage/></Route>
             <Route path="/search"><AllGymsPage/></Route>
             <Route path="/gym"><EachGymPage/></Route>
           </Switch>
