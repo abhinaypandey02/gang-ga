@@ -21,10 +21,17 @@ export async function addUser(user:UserInterface){
     return await fire.firestore().collection("users").doc(user.uid).set(user);
 
 }
-export async function getGymByID(uid:string){
-    const doc=await fire.firestore().collection("gyms").doc(uid).get();
+export async function getGyms(){
+    const doc:any=await fire.firestore().collection("gyms").get();
     if(doc){
-        return doc.data();
+        return doc.docs.map((doc:any)=>doc.data());
+    } 
+    return null;
+}
+export async function getGymByID(uid:string){
+    const data:any=await fire.firestore().collection("gyms").where("uid","==",uid).limit(1).get();
+    if(data&&!data.empty&&data.docs.length===1&&data.docs[0].exists){
+        return data.docs[0].data();
     } 
     return null;
 }

@@ -1,8 +1,32 @@
 import Button from "@material-ui/core/Button";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Navbar, Nav } from "react-bootstrap";
+import { useParams } from "react-router";
+import GymInterface from "../../interfaces/gym";
+import { getGymByID } from "../../utils/firebase/firestore";
+import {v4 as uuid} from 'uuid';
 import './eachgym_page.css';
+import EnrolledSession from "../../interfaces/enrolledSessions";
 export default function EachGymPage(){
+  const params:any=useParams();
+  const [gym,setGym]=useState<GymInterface|null>(null);
+  useEffect(()=>{
+    if(params.gymID){
+      getGymByID(params.gymID).then(data=>{setGym(data)})
+    }
+  },[])
+  function book(){
+    if(gym){
+      const enrolledSession:EnrolledSession={
+        gym:gym.uid,
+        uid:uuid(),
+        attendee:uuid(),
+        plan:[]
+      }
+    }
+    
+  }
+  if(!gym)return null
     return(
         <div>
             <Navbar id='nav1' sticky="top" className='my-5 px-5 d-flex' bg="transparent" variant='dark' expand="lg">
@@ -63,7 +87,7 @@ export default function EachGymPage(){
           <div className="row">
             <div className="col-fluid">
               <div className="d-flex justify-content-between">
-              <h1>OYO 77553 KITTU HOTEL</h1><span className="badge bg-success pt-3"><h5> 6.9 <i className="fas fa-star"></i></h5></span>
+              <h1>{gym.name}</h1><span className="badge bg-success pt-3"><h5> 6.9 <i className="fas fa-star"></i></h5></span>
               </div>
               <br/>
               <h3><strong>Description</strong></h3>
@@ -152,7 +176,7 @@ export default function EachGymPage(){
                   <div className="card-header d-flex justify-content-between text-danger">Coupon <strong>-Rs.0</strong></div>
                   <div className="d-flex justify-content-between mt-2 mx-3">Savings <strong>Rs.0</strong></div>
                   <div className="d-flex justify-content-between mt-3">Total Price <strong>Rs.999</strong></div>
-                  <button className="btn w-100 btn-success my-3">Book</button>
+                  <button onClick={book} className="btn w-100 btn-success my-3">Book</button>
                 </div>
               </div>
             </div>

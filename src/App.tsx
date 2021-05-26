@@ -13,7 +13,7 @@ function App() {
           <Switch>
             <Route exact={true} path="/"><LandingPage/></Route>
             <Route path="/search"><AllGymsPage/></Route>
-            <Route path="/gym"><EachGymPage/></Route>
+            <Route path="/gym/:gymID"><EachGymPage/></Route>
           </Switch>
 
         </HashRouter>
