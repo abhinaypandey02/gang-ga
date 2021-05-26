@@ -3,6 +3,8 @@ import "./allygyms_page.css";
 import { Navbar, Nav } from "react-bootstrap";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import { Link } from "react-router-dom";
+
 import {
     createStyles,
     makeStyles,
@@ -16,10 +18,14 @@ import MultipleSelect from "../../components/materialuiComponents/multipleSelect
 import SimpleSelect from "../../components/materialuiComponents/sortBy/sortby";
 import { getGyms } from "../../utils/firebase/firestore";
 import GymInterface from "../../interfaces/gym";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
+import { useUser } from "../../contexts/user_context";
+import { signOut } from "../../utils/firebase/auth";
 
 export default function AllGymsPage() {
-    const history=useHistory();
+    const params: any = useParams();
+    const [user] = useUser();
+    const history = useHistory();
     const useStyles1 = makeStyles({
         root: {
             maxWidth: 400,
@@ -31,6 +37,9 @@ export default function AllGymsPage() {
     }
 
     const classes = useStyles1();
+    const [searchTerm, setSearchTerm] = useState(
+        params.searchTerm ? params.searchTerm : ""
+    );
     const [value, setValue] = useState<number[]>([0, 37]);
     const [gyms, setGyms] = useState<GymInterface[]>([]);
 
@@ -42,7 +51,11 @@ export default function AllGymsPage() {
             setGyms(docData);
         });
     }, []);
-
+    useEffect(() => {
+        if (params && params.searchTerm) {
+            setSearchTerm(params.searchTerm);
+        }
+    }, [params]);
     return (
         <div className="div">
             <Navbar
@@ -65,6 +78,11 @@ export default function AllGymsPage() {
                         type="text"
                         placeholder="Search for the best GYM near you"
                         aria-label="Search"
+                        value={searchTerm}
+                        onChange={(e) => {
+                            setSearchTerm(e.target.value);
+                            console.log("H");
+                        }}
                     />
                     <Button className="rounded-pill " variant="contained">
                         Go
@@ -74,10 +92,25 @@ export default function AllGymsPage() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">About Us</Nav.Link>
-                        <Nav.Link href="#link2">Login</Nav.Link>
-                        <Nav.Link href="#link22">Signup</Nav.Link>
+                        <Nav.Link as={Link} to="/">
+                            Home
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="/search">
+                            Gyms
+                        </Nav.Link>
+                        {user.name === "" && (
+                            <Nav.Link as={Link} to="/login">
+                                Login
+                            </Nav.Link>
+                        )}
+                        {user.name === "" && (
+                            <Nav.Link as={Link} to="/login">
+                                Signup
+                            </Nav.Link>
+                        )}
+                        {user.name !== "" && (
+                            <Nav.Link onClick={signOut}>SignOut</Nav.Link>
+                        )}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -115,86 +148,105 @@ export default function AllGymsPage() {
                 </div>
                 <div className="container d-flex justify-content-center ">
                     <div className="row d-flex  p-3 justify-content-center">
-                        {gyms.map((gym: GymInterface) => (
-                            <div className="col-12 ">
-                                <div
-                                    className="card mt-4 mx-auto  rounded-0"
-                                    style={{ maxWidth: "1000px" }}
-                                >
-                                    <div className="row g-0">
-                                        <div className="col-md-4 p-4">
-                                            <img
-                                                className="img-fluid"
-                                                src="https://images.unsplash.com/photo-1540496905036-5937c10647cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                                            />
-                                        </div>
-                                        <div className="col-md-8">
-                                            <div className="card-body text-start">
-                                                <h4 className="card-title">
-                                                    <strong>{gym.name}</strong>
-                                                </h4>
-                                                <h6 className="text-muted">
-                                                    {gym.location}
-                                                </h6>
-                                                <br />
-                                                <span className="badge bg-success py-auto">
-                                                    <h6 className="py-auto my-auto">
-                                                        4.5
-                                                        <StarIcon fontSize="small" />{" "}
-                                                    </h6>{" "}
-                                                </span>
-                                                <br />
-                                                <br />
-                                                <CheckCircleOutlineIcon fontSize="small" />
-                                                XYZ yes{" "}
-                                                <CheckCircleOutlineIcon fontSize="small" />
-                                                XYZ yes{" "}
-                                                <CheckCircleOutlineIcon fontSize="small" />
-                                                XYZ yes
-                                                <br />
-                                                <br />
-                                                <p className="card-text">
-                                                    This is a wider card with
-                                                    supporting text below as a
-                                                    natural lead-in to
-                                                    additional content. This
-                                                    content is a little bit
-                                                    longer.
-                                                </p>
-                                                <p className="card-text">
-                                                    <small className="text-muted">
-                                                        Last updated 3 mins ago
-                                                    </small>
-                                                </p>
-                                                <p className="text-danger h3 strong">
-                                                    $32189
-                                                </p>
-                                                <br />
-                                                <Button
-                                                    onClick={()=>history.push('/gym/'+gym.uid)}
-                                                    variant="outlined"
-                                                    className="m-2"
-                                                    style={{
-                                                        color: "#fff",
-                                                        border: "1px solid #fff",
-                                                    }}
-                                                >
-                                                    VIEW DETAILS
-                                                </Button>
-                                                <Button
-                                                onClick={()=>history.push('/gym/'+gym.uid)}
-                                                    variant="contained"
-                                                    className="m-2"
-                                                    color="primary"
-                                                >
-                                                    BOOK NOW
-                                                </Button>
+                        {gyms
+                            .filter((gym) =>
+                                gym.name
+                                    .toLocaleLowerCase()
+                                    .includes(searchTerm.toLocaleLowerCase())
+                            )
+                            .map((gym: GymInterface) => (
+                                <div className="col-12 ">
+                                    <div
+                                        className="card mt-4 mx-auto  rounded-0"
+                                        style={{ maxWidth: "1000px" }}
+                                    >
+                                        <div className="row g-0">
+                                            <div className="col-md-4 p-4">
+                                                <img
+                                                    className="img-fluid"
+                                                    src="https://images.unsplash.com/photo-1540496905036-5937c10647cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                                                />
+                                            </div>
+                                            <div className="col-md-8">
+                                                <div className="card-body text-start">
+                                                    <h4 className="card-title">
+                                                        <strong>
+                                                            {gym.name}
+                                                        </strong>
+                                                    </h4>
+                                                    <h6 className="text-muted">
+                                                        {gym.location}
+                                                    </h6>
+                                                    <br />
+                                                    <span className="badge bg-success py-auto">
+                                                        <h6 className="py-auto my-auto">
+                                                            4.5
+                                                            <StarIcon fontSize="small" />{" "}
+                                                        </h6>{" "}
+                                                    </span>
+                                                    <br />
+                                                    <br />
+                                                    <CheckCircleOutlineIcon fontSize="small" />
+                                                    XYZ yes{" "}
+                                                    <CheckCircleOutlineIcon fontSize="small" />
+                                                    XYZ yes{" "}
+                                                    <CheckCircleOutlineIcon fontSize="small" />
+                                                    XYZ yes
+                                                    <br />
+                                                    <br />
+                                                    <p className="card-text">
+                                                        This is a wider card
+                                                        with supporting text
+                                                        below as a natural
+                                                        lead-in to additional
+                                                        content. This content is
+                                                        a little bit longer.
+                                                    </p>
+                                                    <p className="card-text">
+                                                        <small className="text-muted">
+                                                            Last updated 3 mins
+                                                            ago
+                                                        </small>
+                                                    </p>
+                                                    <p className="text-danger h3 strong">
+                                                        $32189
+                                                    </p>
+                                                    <br />
+                                                    <Button
+                                                        onClick={() =>
+                                                            history.push(
+                                                                "/gym/" +
+                                                                    gym.uid
+                                                            )
+                                                        }
+                                                        variant="outlined"
+                                                        className="m-2"
+                                                        style={{
+                                                            color: "#fff",
+                                                            border: "1px solid #fff",
+                                                        }}
+                                                    >
+                                                        VIEW DETAILS
+                                                    </Button>
+                                                    <Button
+                                                        onClick={() =>
+                                                            history.push(
+                                                                "/gym/" +
+                                                                    gym.uid
+                                                            )
+                                                        }
+                                                        variant="contained"
+                                                        className="m-2"
+                                                        color="primary"
+                                                    >
+                                                        BOOK NOW
+                                                    </Button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                     </div>
                 </div>
             </div>

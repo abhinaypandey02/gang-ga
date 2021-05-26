@@ -18,11 +18,11 @@ export default function UserContext({children}:any){
                     getUserByEmail(user.email).then(docData=>{
                         if(docData){
                             setUser(docData)
-                        }
+                        } else setUser(defaultUser);
                     });
                     
-                }
-            }
+                }else setUser(defaultUser);
+            }else setUser(defaultUser);
         })
     },[])
     return <USER_CONTEXT.Provider value={[user,setUser]}>

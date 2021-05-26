@@ -1,10 +1,18 @@
 
 import React from "react";
 import {Button, Form } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router";
 import NavigationBar from "../../components/navigationBar/navigation_bar";
+import { signInWithEmailPassword } from "../../utils/firebase/auth";
 import "./login_page.css";
 
 export default function LoginPage(){
+    const his=useHistory();
+    const {register, handleSubmit}=useForm();
+    function onSubmit(data:any){
+        signInWithEmailPassword(data.email,data.password);
+    }
     return(
         <div>
             <NavigationBar/>
@@ -16,19 +24,19 @@ export default function LoginPage(){
                  
                   <div className="col">
                     <div className="card-body">
-                    <Form>
+                    <Form onSubmit={handleSubmit(onSubmit)}>
                         <Form.Group controlId="formBasicEmail" className='mb-2'>
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" className='rounded-pill bg-transparent text-light'/>
+                            <Form.Control {...register("email")} type="email" placeholder="Enter email" className='rounded-pill bg-transparent text-light'/>
                   
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" className='mb-2 rounded-pill bg-transparent text-light'/>
+                            <Form.Control {...register("password")} type="password" placeholder="Password" className='mb-2 rounded-pill bg-transparent text-light'/>
                         </Form.Group>
               
-                        <Button variant="light" className='rounded-pill my-2'>Login</Button>
+                        <Button type="submit" variant="light" className='rounded-pill my-2'>Login</Button>
                         </Form>
                     </div>
                   </div>
@@ -36,7 +44,7 @@ export default function LoginPage(){
              
               </div>
               </div>
-              <h6 className='text-light mx-auto my-2'>Not a Member?<Button variant="link">Signup</Button>here</h6>
+              <h6 className='text-light mx-auto my-2'>Not a Member?<Button onClick={()=>his.push('/signup')} variant="link">Signup</Button>here</h6>
               
               </div>
               

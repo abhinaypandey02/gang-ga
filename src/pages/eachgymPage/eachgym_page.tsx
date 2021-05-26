@@ -3,12 +3,17 @@ import React, {useEffect, useState} from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { useParams } from "react-router";
 import GymInterface from "../../interfaces/gym";
-import { getGymByID } from "../../utils/firebase/firestore";
+import { addEnrolledSession, getGymByID } from "../../utils/firebase/firestore";
 import {v4 as uuid} from 'uuid';
 import './eachgym_page.css';
 import EnrolledSession from "../../interfaces/enrolledSessions";
+import { useUser } from "../../contexts/user_context";
+import { useHistory } from "react-router-dom";
+import NavigationBar from "../../components/navigationBar/navigation_bar";
 export default function EachGymPage(){
   const params:any=useParams();
+  const his=useHistory();
+  const [user]=useUser();
   const [gym,setGym]=useState<GymInterface|null>(null);
   useEffect(()=>{
     if(params.gymID){
@@ -16,41 +21,29 @@ export default function EachGymPage(){
     }
   },[])
   function book(){
-    if(gym){
+    console.log("H")
+    if(user.name===''){
+      alert("Please log in to continue!");
+      his.push('/login');
+    } else if(gym){
       const enrolledSession:EnrolledSession={
         gym:gym.uid,
         uid:uuid(),
-        attendee:uuid(),
+        attendee:user.uid,
         plan:[]
       }
+      addEnrolledSession(enrolledSession).then(()=>{
+        alert("Session Booked!");
+        his.push('/');
+      })
     }
     
   }
   if(!gym)return null
     return(
         <div>
-            <Navbar id='nav1' sticky="top" className='my-5 px-5 d-flex' bg="transparent" variant='dark' expand="lg">
-                <Navbar.Brand href="#home" className='d-none d-sm-none d-md-block'>Gang-ga</Navbar.Brand>
-                <div className="d-flex w-75">
-
-                    <input className="form-control px-md-3 py-2 rounded-pill w-100 bg-transparent text-light " type="text" placeholder="Search for the best GYM near you" aria-label="Search" />
-                    <Button className='rounded-pill ' variant='contained'>
-                        Go
-                        </Button>
-                </div>
-
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className='ms-auto'>
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">About Us</Nav.Link>
-                        <Nav.Link href="#link2">Login</Nav.Link>
-                        <Nav.Link href="#link22">Signup</Nav.Link>
-
-                    </Nav>
-
-                </Navbar.Collapse>
-            </Navbar>
+            
+            <NavigationBar/>
             <br/>
   <div className="container-fluid ">
     <div id="carouselExampleIndicators" className="carousel slide" data-mdb-ride="carousel">
