@@ -8,6 +8,7 @@ import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import SignupPage from "./pages/signupPage/signup_page";
 import LoginPage from "./pages/loginPage/login_page";
 import { useUser } from "./contexts/user_context";
+import AdminPage from "./pages/adminPage/admin_page";
 function App() {
     const [user] = useUser();
     return (
@@ -20,6 +21,9 @@ function App() {
                         </Route>
                         <Route exact path="/search">
                             <AllGymsPage />
+                        </Route>
+                        <Route exact path="/admin">
+                            <AdminPage/>
                         </Route>
                         <Route path="/search/:searchTerm">
                             <AllGymsPage />
