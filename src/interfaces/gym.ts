@@ -1,12 +1,26 @@
 export default interface GymInterface{
     uid:string;
     name:string;
-    location:string;
-    owner:string;
+    location:{
+        latitude:number;
+        longitude:number;
+        country:string;
+        state:string;
+        district:string;
+        locality:string;
+        area:string;
+    };
 }
-export const defaultGym={
+export const defaultGym:GymInterface={
     uid:"",
     name:"",
-    location:"",
-    owner:""
+    location:{
+        latitude:NaN,
+        longitude:NaN,
+        country:'',
+        state:'',
+        district:'',
+        locality:'',
+        area:'',
+    }
 }

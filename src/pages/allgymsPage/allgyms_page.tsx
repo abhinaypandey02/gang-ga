@@ -21,11 +21,35 @@ import GymInterface from "../../interfaces/gym";
 import { useHistory, useParams } from "react-router";
 import { useUser } from "../../contexts/user_context";
 import { signOut } from "../../utils/firebase/auth";
+import { usePosition } from "../../components/usePosition/usePosition";
+function rad(x: number) {
+    return (x * Math.PI) / 180;
+}
+function getDistance(
+    rideLat: number,
+    rideLong: number,
+    currLat: number,
+    currLong: number
+) {
+    var R = 6378137; // Earth’s mean radius in meter
+    var dLat = rad(rideLat - currLat);
+    var dLong = rad(rideLong - currLong);
+    var a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(rad(rideLat)) *
+            Math.cos(rad(currLat)) *
+            Math.sin(dLong / 2) *
+            Math.sin(dLong / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = (R * c) / 1000;
+    return d; // returns the distance in meter
+}
 
 export default function AllGymsPage() {
     const params: any = useParams();
     const [user] = useUser();
     const history = useHistory();
+    const { latitude, longitude } = usePosition();
     const useStyles1 = makeStyles({
         root: {
             maxWidth: 400,
@@ -175,7 +199,16 @@ export default function AllGymsPage() {
                                                         </strong>
                                                     </h4>
                                                     <h6 className="text-muted">
-                                                        {gym.location}
+                                                        {latitude &&
+                                                            longitude &&
+                                                            getDistance(
+                                                                gym.location
+                                                                    .latitude,
+                                                                gym.location
+                                                                    .longitude,
+                                                                latitude,
+                                                                longitude
+                                                            ).toFixed()}km
                                                     </h6>
                                                     <br />
                                                     <span className="badge bg-success py-auto">
