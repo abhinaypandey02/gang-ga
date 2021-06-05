@@ -9,6 +9,7 @@ import SignupPage from "./pages/signupPage/signup_page";
 import LoginPage from "./pages/loginPage/login_page";
 import { useUser } from "./contexts/user_context";
 import AdminPage from "./pages/adminPage/admin_page";
+import UserProfile from "./pages/userPage/user_page";
 function App() {
     const [user] = useUser();
     return (
@@ -21,6 +22,9 @@ function App() {
                         </Route>
                         <Route exact path="/search">
                             <AllGymsPage />
+                        </Route>
+                        <Route exact path="/user">
+                            <UserProfile/>
                         </Route>
                         <Route exact path="/admin">
                             <AdminPage/>

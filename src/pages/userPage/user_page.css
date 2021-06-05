@@ -1,0 +1,15 @@
+#userinfo{
+    border: solid 2px ;
+    border-radius: 0% !important;
+    border-color: rgba(255, 255, 255, 0.699) !important;
+    height: 30rem;;
+}
+#past{
+    background: #abbaab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffffff33, #b0d5e62f);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffffff33, #b0c1e64b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: none !important;
+    color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 0% !important;
+}
