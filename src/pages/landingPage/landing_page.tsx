@@ -19,23 +19,26 @@ export default function LandingPage() {
                                 Find the best gyms near you in no time.
                             </strong>
                         </h1>
-
-                        <input
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="form-control px-3 py-2 rounded-pill w-50 mx-auto bg-transparent text-light "
-                            type="text"
-                            placeholder="Search for the best GYM near you"
-                            aria-label="Search"
-                        />
-                        <br />
-                        <Button
-                            onClick={()=>his.push("/search/" + searchTerm)}
-                            className="mx-auto  rounded-pill "
-                            variant="light "
+                        <form
+                            onSubmit={() => his.push("/search/" + searchTerm)}
                         >
-                            Go
-                        </Button>
+                            <input
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="form-control px-3 py-2 rounded-pill w-50 mx-auto bg-transparent text-light "
+                                type="text"
+                                placeholder="Search for the best GYM near you"
+                                aria-label="Search"
+                            />
+                            <br />
+                            <Button
+                                type="submit"
+                                className="mx-auto  rounded-pill "
+                                variant="light "
+                            >
+                                Go
+                            </Button>
+                        </form>
                     </div>
                 </div>
             </div>
