@@ -27,7 +27,7 @@ export default function LandingPage() {
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="form-control px-3 py-2 rounded-pill w-50 mx-auto bg-transparent text-light "
                                 type="text"
-                                placeholder="Search for the best GYM near you"
+                                placeholder="Search for the best GYMs and PARKs near you"
                                 aria-label="Search"
                             />
                             <br />
