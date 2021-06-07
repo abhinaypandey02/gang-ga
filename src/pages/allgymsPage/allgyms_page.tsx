@@ -6,10 +6,7 @@ import Slider from "@material-ui/core/Slider";
 import { Link } from "react-router-dom";
 
 import {
-    createStyles,
     makeStyles,
-    useTheme,
-    Theme,
 } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
@@ -198,7 +195,7 @@ export default function AllGymsPage() {
                                                             {gym.name}
                                                         </strong>
                                                     </h4>
-                                                    <h6 className="text-muted">
+                                                    <h6 className="text-dark">
                                                         {latitude &&
                                                             longitude &&
                                                             getDistance(
@@ -208,59 +205,33 @@ export default function AllGymsPage() {
                                                                     .longitude,
                                                                 latitude,
                                                                 longitude
-                                                            ).toFixed()}km
+                                                            ).toFixed()}
+                                                        km
                                                     </h6>
-                                                    <br />
-                                                    <span className="badge bg-success py-auto">
+                                                    <div className="badge bg-success py-auto">
                                                         <h6 className="py-auto my-auto">
-                                                            4.5
-                                                            <StarIcon fontSize="small" />{" "}
-                                                        </h6>{" "}
-                                                    </span>
-                                                    <br />
-                                                    <br />
-                                                    <CheckCircleOutlineIcon fontSize="small" />
-                                                    XYZ yes{" "}
-                                                    <CheckCircleOutlineIcon fontSize="small" />
-                                                    XYZ yes{" "}
-                                                    <CheckCircleOutlineIcon fontSize="small" />
-                                                    XYZ yes
-                                                    <br />
-                                                    <br />
+                                                            {gym.rating}
+                                                            <StarIcon fontSize="small" />
+                                                        </h6>
+                                                    </div>
+                                                    <div className="my-3">
+                                                    {gym.features.map(
+                                                        (feature) => (
+                                                            <span className="text-capitalize m-1">
+                                                                <CheckCircleOutlineIcon className="m-1" fontSize="small" />
+                                                                {feature}
+                                                            </span>
+                                                        )
+                                                    )}
+                                                    </div>
+                                                    
+
                                                     <p className="card-text">
-                                                        This is a wider card
-                                                        with supporting text
-                                                        below as a natural
-                                                        lead-in to additional
-                                                        content. This content is
-                                                        a little bit longer.
-                                                    </p>
-                                                    <p className="card-text">
-                                                        <small className="text-muted">
-                                                            Last updated 3 mins
-                                                            ago
-                                                        </small>
+                                                        {gym.description}
                                                     </p>
                                                     <p className="text-danger h3 strong">
-                                                        $32189
+                                                        ₹{gym.price}/day
                                                     </p>
-                                                    <br />
-                                                    <Button
-                                                        onClick={() =>
-                                                            history.push(
-                                                                "/gym/" +
-                                                                    gym.uid
-                                                            )
-                                                        }
-                                                        variant="outlined"
-                                                        className="m-2"
-                                                        style={{
-                                                            color: "#fff",
-                                                            border: "1px solid #fff",
-                                                        }}
-                                                    >
-                                                        VIEW DETAILS
-                                                    </Button>
                                                     <Button
                                                         onClick={() =>
                                                             history.push(
