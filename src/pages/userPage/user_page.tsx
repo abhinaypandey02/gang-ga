@@ -59,7 +59,7 @@ export default function UserProfile() {
                                     Past Registrations
                                 </span>
                             </h2>
-                            <div className="col-12 ">
+                            <div className="col">
                                 {enrolledSessions.map((sess) => (
                                     <PastRegistrationCard session={sess} />
                                 ))}

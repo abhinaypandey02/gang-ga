@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import NavigationBar from "../../components/navigationBar/navigation_bar";
 import StarIcon from "@material-ui/icons/Star";
 import getPlanName from "../../utils/extras/functions";
+import { Carousel } from "react-bootstrap";
 
 
 export default function EachGymPage() {
@@ -82,75 +83,44 @@ export default function EachGymPage() {
         <div>
             <NavigationBar />
             <br />
-            <div className="container-fluid ">
-                <div
-                    id="carouselExampleIndicators"
-                    className="carousel slide"
-                    data-mdb-ride="carousel"
-                >
-                    <ol className="carousel-indicators">
-                        <li
-                            data-mdb-target="#carouselExampleIndicators"
-                            data-mdb-slide-to="0"
-                            className="active"
-                        ></li>
-                        <li
-                            data-mdb-target="#carouselExampleIndicators"
-                            data-mdb-slide-to="1"
-                        ></li>
-                        <li
-                            data-mdb-target="#carouselExampleIndicators"
-                            data-mdb-slide-to="2"
-                        ></li>
-                    </ol>
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img
-                                src="https://mdbootstrap.com/img/new/slides/041.jpg"
-                                className="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                        <div className="carousel-item">
-                            <img
-                                src="https://mdbootstrap.com/img/new/slides/042.jpg"
-                                className="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                        <div className="carousel-item">
-                            <img
-                                src="https://mdbootstrap.com/img/new/slides/043.jpg"
-                                className="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                    </div>
-                    <a
-                        className="carousel-control-prev"
-                        href="#carouselExampleIndicators"
-                        role="button"
-                        data-mdb-slide="prev"
-                    >
-                        <span
-                            className="carousel-control-prev-icon"
-                            aria-hidden="true"
-                        ></span>
-                        <span className="visually-hidden">Previous</span>
-                    </a>
-                    <a
-                        className="carousel-control-next"
-                        href="#carouselExampleIndicators"
-                        role="button"
-                        data-mdb-slide="next"
-                    >
-                        <span
-                            className="carousel-control-next-icon"
-                            aria-hidden="true"
-                        ></span>
-                        <span className="visually-hidden">Next</span>
-                    </a>
-                </div>
+            <div className="container">
+            <Carousel>
+                <Carousel.Item>
+                    <img
+                    className="d-block h-75 w-100"
+                    src="https://images.unsplash.com/photo-1619787840304-a2a33fb691b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1035&q=80"
+                    alt="First slide"
+                    />
+                    <Carousel.Caption>
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                    className="d-block h-75 w-100"
+                    src="https://images.unsplash.com/photo-1621570361070-896021ba01cc?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80"
+                    alt="Second slide"
+                    />
+
+                    <Carousel.Caption>
+                    <h3>Second slide label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                    className="d-block h-75 w-100"
+                    src="https://images.unsplash.com/photo-1623038896180-d81dd785a60f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                    alt="Third slide"
+                    />
+
+                    <Carousel.Caption>
+                    <h3>Third slide label</h3>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                </Carousel>
             </div>
             <div className="container text-light my-3">
                 <div className="row">
