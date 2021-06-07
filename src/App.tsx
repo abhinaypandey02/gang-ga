@@ -23,32 +23,41 @@ function App() {
                         <Route exact path="/search">
                             <AllGymsPage />
                         </Route>
-                        <Route exact path="/user">
-                            <UserProfile/>
-                        </Route>
-                        <Route exact path="/admin">
-                            <AdminPage/>
-                        </Route>
+                        
                         <Route path="/search/:searchTerm">
                             <AllGymsPage />
                         </Route>
                         <Route path="/gym/:gymID">
                             <EachGymPage />
                         </Route>
-                        {user.name === "" ? (
-                            <Route path="/signup">
+                        <Route path="/signup">
+                            {user.name === "" ? (
                                 <SignupPage />
-                            </Route>
-                        ) : (
-                            <Redirect to="/" />
-                        )}
-                        {user.name === "" ? (
-                            <Route path="/login">
+                            ) : (
+                                <Redirect to="/" />
+                            )}
+                        </Route>
+                        <Route path="/login">
+                            {user.name === "" ? (
                                 <LoginPage />
-                            </Route>
-                        ) : (
-                            <Redirect to="/" />
-                        )}
+                            ) : (
+                                <Redirect to="/" />
+                            )}
+                        </Route>
+                        <Route path="/admin">
+                            {user.name !== "" ? (
+                                <AdminPage />
+                            ) : (
+                                <Redirect to="/" />
+                            )}
+                        </Route>
+                        <Route path="/user">
+                            {user.name !== "" ? (
+                                <UserProfile />
+                            ) : (
+                                <Redirect to="/" />
+                            )}
+                        </Route>
                     </Switch>
                 </HashRouter>
                 <Footer />
