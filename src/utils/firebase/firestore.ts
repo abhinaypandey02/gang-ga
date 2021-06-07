@@ -46,6 +46,13 @@ export async function getEnrolledSessionByID(uid:string){
     } 
     return null;
 }
+export async function getEnrolledSessionByUser(uid:string){
+    const data=await fire.firestore().collection("enrolledSessions").where("attendee","==",uid).get();
+    if(data&&!data.empty){
+        return data.docs.map((doc:any)=>doc.data());
+    } 
+    return [];
+}
 export async function addEnrolledSession(enrolledSession:EnrolledSession){
     return await fire.firestore().collection("enrolledSessions").add(enrolledSession);
 

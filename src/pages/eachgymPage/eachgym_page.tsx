@@ -10,23 +10,8 @@ import { useUser } from "../../contexts/user_context";
 import { useHistory } from "react-router-dom";
 import NavigationBar from "../../components/navigationBar/navigation_bar";
 import StarIcon from "@material-ui/icons/Star";
-function getPlanName(days: number) {
-    switch (days) {
-        case 1:
-            return "Daily";
-        case 15:
-            return "Fortnite";
-        case 30:
-            return "Monthly";
-        case 90:
-            return "Quarterly";
-        case 180:
-            return "Half Yearly";
-        case 365:
-            return "Annually";
-    }
-    return "Special Plan";
-}
+import getPlanName from "../../utils/extras/functions";
+
 
 export default function EachGymPage() {
     const params: any = useParams();
@@ -83,7 +68,8 @@ export default function EachGymPage() {
                 gym: gym.uid,
                 uid: uuid(),
                 attendee: user.uid,
-                plan: [],
+                daysSubscribed,
+                amountPaid:gym.price*daysSubscribed
             };
             addEnrolledSession(enrolledSession).then(() => {
                 alert("Session Booked!");
