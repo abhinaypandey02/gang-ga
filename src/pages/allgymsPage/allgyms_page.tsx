@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import StarIcon from "@material-ui/icons/Star";
-import MultipleSelect from "../../components/materialuiComponents/multipleSelect/multipleselect";
+import SimpleSelect2 from "../../components/materialuiComponents/multipleSelect/multipleselect";
 import SimpleSelect from "../../components/materialuiComponents/sortBy/sortby";
 import { getGyms } from "../../utils/firebase/firestore";
 import GymInterface from "../../interfaces/gym";
@@ -40,36 +40,59 @@ function getDistance(
     return d; // returns the distance in meter
 }
 
+interface GymInterfaceWithDistance extends GymInterface {
+    distance: number;
+}
+
 export default function AllGymsPage() {
     const params: any = useParams();
     const [user] = useUser();
     const history = useHistory();
     const { latitude, longitude } = usePosition();
-    const useStyles1 = makeStyles({
-        root: {
-            maxWidth: 400,
-        },
-    });
 
-    function valuetext(value: number) {
-        return `${value}°C`;
-    }
-
-    const classes = useStyles1();
     const [searchTerm, setSearchTerm] = useState(
         params.searchTerm ? params.searchTerm : ""
     );
-    const [value, setValue] = useState<number[]>([0, 37]);
-    const [gyms, setGyms] = useState<GymInterface[]>([]);
-
-    const handleChange1 = (event: any, newValue: number | number[]) => {
-        setValue(newValue as number[]);
-    };
+    const [gyms, setGyms] = useState<GymInterfaceWithDistance[]>([]);
+    const [sortBy, setSortBy] = useState<string>("distance");
+    const [category, setCategory] = useState("all");
     useEffect(() => {
-        getGyms().then((docData: GymInterface[]) => {
-            setGyms(docData);
-        });
-    }, []);
+        if (gyms.length === 0 && latitude && longitude) {
+            getGyms().then((docData: GymInterface[]) => {
+                setGyms(
+                    docData
+                        .map((gym) => ({
+                            ...gym,
+                            distance: getDistance(
+                                gym.location.latitude,
+                                gym.location.longitude,
+                                latitude,
+                                longitude
+                            ),
+                        }))
+                        .sort((a, b) => a.distance - b.distance)
+                );
+            });
+        }
+    }, [latitude, longitude]);
+    useEffect(() => {
+        if (gyms) {
+            switch (sortBy) {
+                case "price asc": {
+                    setGyms([...gyms.sort((a, b) => a.price - b.price)]);
+                    break;
+                }
+                case "price desc": {
+                    setGyms([...gyms.sort((a, b) => b.price - a.price)]);
+                    break;
+                }
+                case "distance": {
+                    setGyms([...gyms.sort((a, b) => a.distance - b.distance)]);
+                    break;
+                }
+            }
+        }
+    }, [sortBy]);
     useEffect(() => {
         if (params && params.searchTerm) {
             setSearchTerm(params.searchTerm);
@@ -100,7 +123,6 @@ export default function AllGymsPage() {
                         value={searchTerm}
                         onChange={(e) => {
                             setSearchTerm(e.target.value);
-                            console.log("H");
                         }}
                     />
                     <Button className="rounded-pill m-2" variant="contained">
@@ -139,41 +161,31 @@ export default function AllGymsPage() {
                         className="col-md-3 p-3 m-lg-3 text-start"
                         id="filterbox"
                     >
-                        <div className={classes.root}>
-                            <Typography id="range-slider" gutterBottom>
-                                Price Range
-                            </Typography>
-                            <Slider
-                                value={value}
-                                onChange={handleChange1}
-                                valueLabelDisplay="auto"
-                                aria-labelledby="range-slider"
-                                getAriaValueText={valuetext}
-                            />
-                        </div>
+                        <SimpleSelect2
+                            sortBy={category}
+                            setSortBy={setCategory}
+                        />
                     </div>
                     <div
                         className="col-md-3 p-3 m-lg-3 text-start"
                         id="filterbox"
                     >
-                        <MultipleSelect />
-                    </div>
-                    <div
-                        className="col-md-3 p-3 m-lg-3 text-start"
-                        id="filterbox"
-                    >
-                        <SimpleSelect />
+                        <SimpleSelect sortBy={sortBy} setSortBy={setSortBy} />
                     </div>
                 </div>
                 <div className="container d-flex justify-content-center ">
                     <div className="row d-flex  p-3 justify-content-center">
                         {gyms
-                            .filter((gym) =>
-                                gym.name
+                            .filter((gym) => {
+                                let bool = gym.name
                                     .toLocaleLowerCase()
-                                    .includes(searchTerm.toLocaleLowerCase())
-                            )
-                            .map((gym: GymInterface) => (
+                                    .includes(searchTerm.toLocaleLowerCase());
+                                if (category !== "all") {
+                                    bool = bool&&gym.type === category;
+                                }
+                                return bool;
+                            })
+                            .map((gym) => (
                                 <div className="col-12 ">
                                     <div
                                         className="card mt-4 mx-auto  rounded-0"
@@ -196,14 +208,7 @@ export default function AllGymsPage() {
                                                     <h6 className="text-dark">
                                                         {latitude &&
                                                             longitude &&
-                                                            getDistance(
-                                                                gym.location
-                                                                    .latitude,
-                                                                gym.location
-                                                                    .longitude,
-                                                                latitude,
-                                                                longitude
-                                                            ).toFixed()}
+                                                            gym.distance.toFixed()}
                                                         km
                                                     </h6>
                                                     <div className="badge bg-success py-auto m-2">

@@ -67,9 +67,9 @@ export default function AddGymForm() {
         <Form onSubmit={handleSubmit(onSubmit)}>
             {FormGroup({
                 id: "name",
-                name: "Gym Name",
+                name: "Name",
                 type: "text",
-                placeholder: "Enter Gym Name",
+                placeholder: "Enter Name",
             })}
             {FormGroup({
                 id: "price",
@@ -81,43 +81,43 @@ export default function AddGymForm() {
                 id: "latitude",
                 name: "Latitude",
                 type: "text",
-                placeholder: "Enter Gym's Latitude",
+                placeholder: "Enter Latitude",
             })}
             {FormGroup({
                 id: "longitude",
                 name: "Longitude",
                 type: "text",
-                placeholder: "Enter Gym's Longitude",
+                placeholder: "Enter Longitude",
             })}
             {FormGroup({
                 id: "state",
                 name: "State",
                 type: "text",
-                placeholder: "Enter Gym's State",
+                placeholder: "Enter State",
             })}
             {FormGroup({
                 id: "district",
                 name: "District",
                 type: "text",
-                placeholder: "Enter Gym's District",
+                placeholder: "Enter District",
             })}
             {FormGroup({
                 id: "area",
                 name: "Area",
                 type: "text",
-                placeholder: "Enter Gym's Area",
+                placeholder: "Enter Area",
             })}
             {FormGroup({
                 id: "locality",
                 name: "Locality",
                 type: "text",
-                placeholder: "Enter Gym's Locality",
+                placeholder: "Enter Locality",
             })}
             {FormGroup({
                 id: "features",
-                name: "Features of Gym",
+                name: "Features",
                 type: "text",
-                placeholder: "Comma Seperated Gym Features",
+                placeholder: "Comma Seperated Features",
             })}
             <Form.Group className="mb-2">
                 <Form.Label>Type</Form.Label>
@@ -137,7 +137,7 @@ export default function AddGymForm() {
                     {...register("description")}
                     id={"description"}
                     name={"description"}
-                    placeholder="Gym Description"
+                    placeholder="Description"
                     className="bg-transparent text-light"
                 />
             </Form.Group>
@@ -147,7 +147,7 @@ export default function AddGymForm() {
                 variant="light"
                 className="rounded-pill my-2"
             >
-                Add Gym
+                Add
             </Button>
         </Form>
     );

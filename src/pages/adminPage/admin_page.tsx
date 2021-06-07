@@ -20,7 +20,7 @@ export default function AdminPage() {
             <h1 className='text-light display-2'>Admin Console</h1>
             <hr/>
             <div className="container">
-            <h1 className='text-light m-3'>Add Gym</h1>
+            <h1 className='text-light m-3'>Add Gym/Park</h1>
 
                 <div className="row">
                     <div className="container  d-flex flex-column">

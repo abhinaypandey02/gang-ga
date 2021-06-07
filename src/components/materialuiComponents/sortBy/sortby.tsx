@@ -18,12 +18,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function SimpleSelect() {
+export default function SimpleSelect({sortBy,setSortBy}:any) {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
+    setSortBy(event.target.value as string);
   };
 
   return (
@@ -34,16 +33,13 @@ export default function SimpleSelect() {
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
-          value={age}
+          value={sortBy}
           onChange={handleChange}
           autoWidth
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={"distance"}>Distance</MenuItem>
+          <MenuItem value={"price asc"}>Price (Low to High)</MenuItem>
+          <MenuItem value={"price desc"}>Price (High to Low)</MenuItem>
         </Select>
        
       </FormControl>
