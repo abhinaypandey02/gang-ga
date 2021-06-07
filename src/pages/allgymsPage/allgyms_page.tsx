@@ -99,20 +99,21 @@ export default function AllGymsPage() {
         }
     }, [params]);
     return (
-        <div className="div">
+        <div >
             <Navbar
                 id="nav1"
                 sticky="top"
-                className="my-5 px-5 d-flex"
+                className="pt-md-5 px-5 d-flex"
                 bg="transparent"
                 variant="dark"
                 expand="lg"
             >
                 <Navbar.Brand
-                    href="#home"
-                    className="d-none d-sm-none d-md-block"
+                    href="#"
+                    className="d-none d-sm-none d-md-block "
                 >
-                    Gang-ga
+                    <span className="h2">Gang-ga</span>
+                    
                 </Navbar.Brand>
                 <div className="d-flex w-75">
                     <input
@@ -150,7 +151,7 @@ export default function AllGymsPage() {
                             </Nav.Link>
                         )}
                         {user.name !== "" && (
-                            <Nav.Link onClick={signOut}>SignOut</Nav.Link>
+                            <Nav.Link as={Link} to="/user">{user.name}</Nav.Link>
                         )}
                     </Nav>
                 </Navbar.Collapse>

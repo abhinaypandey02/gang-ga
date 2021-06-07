@@ -7,6 +7,8 @@ import { useUser } from "../../contexts/user_context";
 import EnrolledSession from "../../interfaces/enrolledSessions";
 import { getEnrolledSessionByUser } from "../../utils/firebase/firestore";
 import PastRegistrationCard from "./pastRegistrationCard/past_registration_card";
+import { signOut } from "../../utils/firebase/auth";
+
 import "./user_page.css";
 export default function UserProfile() {
     const [user, setUser] = useUser();
@@ -16,7 +18,7 @@ export default function UserProfile() {
     useEffect(() => {
         getEnrolledSessionByUser(user.uid).then((docs) => {
             setEnrolledSessions(docs);
-            console.log(docs)
+            console.log(docs);
         });
     }, [user]);
     return (
@@ -37,14 +39,15 @@ export default function UserProfile() {
                                 alt="..."
                             />
                         </div>
-                        <br />
-                        <h2>
-                            <span className="text-light">{user.name}</span>
-                        </h2>
-                        <h5>
-                            <span className="text-light">{user.email}</span>
-                        </h5>
-                        <br />
+                        <h2 className="text-light m-2">{user.name}</h2>
+                        <h5 className="text-light">{user.email}</h5>
+                        <Button
+                            variant="info"
+                            onClick={signOut}
+                            className="rounded-pill m-2"
+                        >
+                            Sign Out
+                        </Button>
                     </div>
                     {enrolledSessions.length > 0 && (
                         <div
@@ -58,7 +61,7 @@ export default function UserProfile() {
                             </h2>
                             <div className="col-12 ">
                                 {enrolledSessions.map((sess) => (
-                                    <PastRegistrationCard session={sess}/>
+                                    <PastRegistrationCard session={sess} />
                                 ))}
                             </div>
                         </div>
