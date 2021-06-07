@@ -13,7 +13,6 @@ import StarIcon from "@material-ui/icons/Star";
 import getPlanName from "../../utils/extras/functions";
 import { Carousel } from "react-bootstrap";
 
-
 export default function EachGymPage() {
     const params: any = useParams();
     const his = useHistory();
@@ -70,7 +69,7 @@ export default function EachGymPage() {
                 uid: uuid(),
                 attendee: user.uid,
                 daysSubscribed,
-                amountPaid:gym.price*daysSubscribed
+                amountPaid: gym.price * daysSubscribed,
             };
             addEnrolledSession(enrolledSession).then(() => {
                 alert("Session Booked!");
@@ -139,26 +138,52 @@ export default function EachGymPage() {
                                         </span>
                                     </div>
                                     <br />
-                                    <h3>
-                                        <strong>Description</strong>
+                                    <h3 style={{ textAlign: "left" }}>
+                                        <strong>
+                                            <u>Location:</u>
+                                        </strong>
                                     </h3>
-                                    <p>{gym.description}</p>
-                                    <h3>
-                                        <strong>Amendities</strong>
+                                    <p style={{ textAlign: "left" }}>
+                                        {gym.location.locality},{" "}
+                                        {gym.location.area},{" "}
+                                        {gym.location.district},{" "}
+                                        {gym.location.state}
+                                    </p>
+                                    <h3
+                                        className="mt-5"
+                                        style={{ textAlign: "left" }}
+                                    >
+                                        <strong>
+                                            <u>Description:</u>
+                                        </strong>
                                     </h3>
-                                    <table className="table text-light">
-                                        <tbody>
-                                            {newArr.map((element) => (
-                                                <tr>
-                                                    {element.map((feature) => (
-                                                        <td className="text-capitalize">{feature}</td>
-                                                    ))}
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
+                                    <p style={{ textAlign: "left" }}>
+                                        {gym.description}
+                                    </p>
+                                    <h3
+                                        className="mt-5"
+                                        style={{ textAlign: "left" }}
+                                    >
+                                        <strong>
+                                            <u>Amendities</u>
+                                        </strong>
+                                    </h3>
+                                    <div className="d-flex mt-4 text-light">
+                                        {gym.features.map((element) => (
+                                            <td className="text-capitalize border-2 border-light p-3">
+                                                {element}
+                                            </td>
+                                        ))}
+                                    </div>
                                     <br />
-                                    <h3>Choose your plan</h3>
+                                    <h3
+                                        className="mt-5"
+                                        style={{ textAlign: "left" }}
+                                    >
+                                        <strong>
+                                            <u>Choose your plan:</u>
+                                        </strong>
+                                    </h3>
                                     <br />
 
                                     <br />
