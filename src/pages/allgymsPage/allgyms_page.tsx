@@ -5,9 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import { Link } from "react-router-dom";
 
-import {
-    makeStyles,
-} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import StarIcon from "@material-ui/icons/Star";
@@ -95,7 +93,7 @@ export default function AllGymsPage() {
                 </Navbar.Brand>
                 <div className="d-flex w-75">
                     <input
-                        className="form-control px-md-3 py-2 rounded-pill w-100 bg-transparent text-light "
+                        className="form-control px-md-3 m-2 py-2 rounded-pill w-100 bg-transparent text-light "
                         type="text"
                         placeholder="Search for the best GYM near you"
                         aria-label="Search"
@@ -105,7 +103,7 @@ export default function AllGymsPage() {
                             console.log("H");
                         }}
                     />
-                    <Button className="rounded-pill " variant="contained">
+                    <Button className="rounded-pill m-2" variant="contained">
                         Go
                     </Button>
                 </div>
@@ -208,23 +206,30 @@ export default function AllGymsPage() {
                                                             ).toFixed()}
                                                         km
                                                     </h6>
-                                                    <div className="badge bg-success py-auto">
+                                                    <div className="badge bg-success py-auto m-2">
                                                         <h6 className="py-auto my-auto">
                                                             {gym.rating}
                                                             <StarIcon fontSize="small" />
                                                         </h6>
                                                     </div>
-                                                    <div className="my-3">
-                                                    {gym.features.map(
-                                                        (feature) => (
-                                                            <span className="text-capitalize m-1">
-                                                                <CheckCircleOutlineIcon className="m-1" fontSize="small" />
-                                                                {feature}
-                                                            </span>
-                                                        )
-                                                    )}
+                                                    <div className="badge bg-warning py-auto m-2">
+                                                        <h6 className="py-auto my-auto text-capitalize text-dark">
+                                                            {gym.type}
+                                                        </h6>
                                                     </div>
-                                                    
+                                                    <div className="my-3">
+                                                        {gym.features.map(
+                                                            (feature) => (
+                                                                <span className="text-capitalize m-1">
+                                                                    <CheckCircleOutlineIcon
+                                                                        className="m-1"
+                                                                        fontSize="small"
+                                                                    />
+                                                                    {feature}
+                                                                </span>
+                                                            )
+                                                        )}
+                                                    </div>
 
                                                     <p className="card-text">
                                                         {gym.description}

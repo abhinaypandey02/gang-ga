@@ -26,12 +26,13 @@ export default function AddGymForm() {
         tempGym.location.state = data.state;
         tempGym.location.latitude = parseInt(data.latitude);
         tempGym.location.longitude = parseInt(data.longitude);
+        tempGym.type=data.type;
         tempGym.features = data.features
             .split(",")
             .map((feature: string) => feature.trim());
         addGym(tempGym).then(() => {
             reset();
-            alert("Gym added!")
+            alert("Gym added!");
             setLoading(false);
         });
     }
@@ -119,6 +120,17 @@ export default function AddGymForm() {
                 placeholder: "Comma Seperated Gym Features",
             })}
             <Form.Group className="mb-2">
+                <Form.Label>Type</Form.Label>
+                <Form.Control
+                    as="select"
+                    {...register("type")}
+                    className="bg-transparent text-light"
+                >
+                    <option value="gym" className="text-dark">Gym</option>
+                    <option value="park" className="text-dark">Park</option>
+                </Form.Control>
+            </Form.Group>
+            <Form.Group className="mb-2">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                     as="textarea"
@@ -126,7 +138,7 @@ export default function AddGymForm() {
                     id={"description"}
                     name={"description"}
                     placeholder="Gym Description"
-                    className="rounded-pill bg-transparent text-light"
+                    className="bg-transparent text-light"
                 />
             </Form.Group>
             <Button
