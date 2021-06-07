@@ -99,7 +99,7 @@ export default function AllGymsPage() {
         }
     }, [params]);
     return (
-        <div >
+        <div>
             <Navbar
                 id="nav1"
                 sticky="top"
@@ -108,12 +108,8 @@ export default function AllGymsPage() {
                 variant="dark"
                 expand="lg"
             >
-                <Navbar.Brand
-                    href="#"
-                    className="d-none d-sm-none d-md-block "
-                >
+                <Navbar.Brand href="#" className="d-none d-sm-none d-md-block ">
                     <span className="h2">Gang-ga</span>
-                    
                 </Navbar.Brand>
                 <div className="d-flex w-75">
                     <input
@@ -151,7 +147,9 @@ export default function AllGymsPage() {
                             </Nav.Link>
                         )}
                         {user.name !== "" && (
-                            <Nav.Link as={Link} to="/user">{user.name}</Nav.Link>
+                            <Nav.Link as={Link} to="/user">
+                                {user.name}
+                            </Nav.Link>
                         )}
                     </Nav>
                 </Navbar.Collapse>
@@ -182,7 +180,7 @@ export default function AllGymsPage() {
                                     .toLocaleLowerCase()
                                     .includes(searchTerm.toLocaleLowerCase());
                                 if (category !== "all") {
-                                    bool = bool&&gym.type === category;
+                                    bool = bool && gym.type === category;
                                 }
                                 return bool;
                             })
@@ -201,17 +199,25 @@ export default function AllGymsPage() {
                                             </div>
                                             <div className="col-md-8">
                                                 <div className="card-body text-start">
-                                                    <h4 className="card-title">
+                                                    <h4 className="card-title ">
                                                         <strong>
                                                             {gym.name}
                                                         </strong>
                                                     </h4>
+                                                    <h6 className="text-dark">
+                                                        <img className="m-1" src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+                                                        {gym.location.locality},{" "}
+                                                        {gym.location.area},{" "}
+                                                        {gym.location.district},{" "}
+                                                        {gym.location.state}
+                                                    </h6>
                                                     <h6 className="text-dark">
                                                         {latitude &&
                                                             longitude &&
                                                             gym.distance.toFixed()}
                                                         km
                                                     </h6>
+
                                                     <div className="badge bg-success py-auto m-2">
                                                         <h6 className="py-auto my-auto">
                                                             {gym.rating}
