@@ -13,16 +13,99 @@ import StarIcon from "@material-ui/icons/Star";
 import getPlanName from "../../utils/extras/functions";
 import { Carousel } from "react-bootstrap";
 
+import logo from "../../logo.svg";
+
 export default function EachGymPage() {
     const params: any = useParams();
     const his = useHistory();
     const [user] = useUser();
     const [gym, setGym] = useState<GymInterface | null>(null);
     const [daysSubscribed, setDaysSubscribed] = useState(1);
+    const [loading, setLoading] = useState(false);
     const newArr: string[][] = [];
     if (gym) {
         const oldArr = [...gym.features];
         while (oldArr.length) newArr.push(oldArr.splice(0, 3));
+    }
+    function loadScript(src: string) {
+        return new Promise((resolve) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.onload = () => {
+                resolve(true);
+            };
+            script.onerror = () => {
+                resolve(false);
+            };
+            document.body.appendChild(script);
+        });
+    }
+    async function displayRazorpay() {
+        setLoading(true);
+        if (!gym || user.name == "") return;
+        const res = await loadScript(
+            "https://checkout.razorpay.com/v1/checkout.js"
+        );
+
+        if (!res) {
+            alert("Razorpay SDK failed to load. Are you online?");
+            return;
+        }
+
+        const data = await fetch(
+            "https://us-central1-entertainment-coach-db.cloudfunctions.net/braintree/razorpay",
+            {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    amount: daysSubscribed * gym.price,
+                }),
+            }
+        ).then((t) => t.json());
+
+        const options = {
+            key: "rzp_test_tVfWajqfyKu6PG",
+            currency: data.currency,
+            amount: data.amount.toString(),
+            order_id: data.id,
+            name: `${gym.name} Booking`,
+            description: `Paying ₹${
+                data.amount / 100
+            } for booking ${daysSubscribed} day at ${gym.name}`,
+            image: logo,
+            handler: function (response: any) {
+                if (gym) {
+                    const enrolledSession: EnrolledSession = {
+                        gym: gym.uid,
+                        uid: uuid(),
+                        attendee: user.uid,
+                        daysSubscribed,
+                        reciept: {
+                            amount: gym.price * daysSubscribed,
+                            orderID: response.razorpay_order_id,
+                            paymentID: response.razorpay_payment_id,
+                            signature: response.razorpay_signature,
+                        },
+                    };
+                    addEnrolledSession(enrolledSession).then(() => {
+                        alert("Session Booked!");
+                        his.push("/user");
+                    });
+                }
+            },
+            prefill: {
+                name: user.name,
+                email: user.email,
+                phone_number: "",
+            },
+        };
+        const _window = window as any;
+        const paymentObject = new _window.Razorpay(options);
+        paymentObject.open();
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -59,23 +142,10 @@ export default function EachGymPage() {
     }
 
     function book() {
-        console.log("H");
         if (user.name === "") {
             alert("Please log in to continue!");
             his.push("/login");
-        } else if (gym) {
-            const enrolledSession: EnrolledSession = {
-                gym: gym.uid,
-                uid: uuid(),
-                attendee: user.uid,
-                daysSubscribed,
-                amountPaid: gym.price * daysSubscribed,
-            };
-            addEnrolledSession(enrolledSession).then(() => {
-                alert("Session Booked!");
-                his.push("/");
-            });
-        }
+        } else displayRazorpay();
     }
     if (!gym) return null;
     return (
@@ -83,42 +153,34 @@ export default function EachGymPage() {
             <NavigationBar />
             <br />
             <div className="container">
-            <Carousel>
-                <Carousel.Item>
-                    <img
-                    className="d-block h-75 w-100"
-                    src="https://images.unsplash.com/photo-1619787840304-a2a33fb691b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1035&q=80"
-                    alt="First slide"
-                    />
-                    <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                    className="d-block h-75 w-100"
-                    src="https://images.unsplash.com/photo-1621570361070-896021ba01cc?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80"
-                    alt="Second slide"
-                    />
-
-                    <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                    className="d-block h-75 w-100"
-                    src="https://images.unsplash.com/photo-1623038896180-d81dd785a60f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                    alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
+                <Carousel>
+                    {gym.gallery.length > 0 &&
+                        gym.gallery.map((imageURL) => (
+                            <Carousel.Item>
+                                <img
+                                    className="d-block h-75 w-100"
+                                    src={imageURL}
+                                    alt="First slide"
+                                />
+                                <Carousel.Caption>
+                                    <h3>{gym.name}</h3>
+                                    <p>{gym.description}</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        ))}
+                    {gym.gallery.length === 0 && (
+                        <Carousel.Item>
+                            <img
+                                className="d-block h-75 w-100"
+                                src="https://static.toiimg.com/thumb/msid-78118340,imgsize-896783,width-800,height-600,resizemode-75/78118340.jpg"
+                                alt="First slide"
+                            />
+                            <Carousel.Caption>
+                                <h3>{gym.name}</h3>
+                                <p>{gym.description}</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    )}
                 </Carousel>
             </div>
             <div className="container text-light my-3">
@@ -226,10 +288,21 @@ export default function EachGymPage() {
                                                 </strong>
                                             </div>
                                             <button
+                                                disabled={loading}
                                                 onClick={book}
                                                 className="btn w-100 btn-success my-3"
                                             >
-                                                Book
+                                                {loading ? (
+                                                    <span className="align-items-center d-flex justify-content-center">
+                                                        Loading
+                                                        <div
+                                                            className="spinner-border mx-2"
+                                                            role="status"
+                                                        />
+                                                    </span>
+                                                ) : (
+                                                    "Book"
+                                                )}
                                             </button>
                                         </div>
                                     </div>

@@ -22,7 +22,7 @@ export default function PastRegistrationCard({session}:{session:EnrolledSession}
             </tr>
             <tr>
                 <td>Amount Paid:</td>
-                <td style={{color:'#3FFF33'}}>₹{session.amountPaid}</td>
+                <td style={{color:'#3FFF33'}}>₹{session.reciept.amount}</td>
             </tr>
             <tr>
                 <td>Days Subscribed:</td>

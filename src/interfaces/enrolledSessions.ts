@@ -3,5 +3,10 @@ export default interface EnrolledSession{
     uid:string;
     attendee:string;
     daysSubscribed:number;
-    amountPaid:number;
+    reciept:{
+        amount:number;
+        paymentID:string;
+        orderID:string;
+        signature:string;
+    }
 }

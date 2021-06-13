@@ -14,6 +14,7 @@ export default interface GymInterface{
     price:number;
     rating:number;
     features:string[];
+    gallery:string[];
     type:"gym"|"park"
 }
 export const defaultGym:GymInterface={
@@ -32,5 +33,6 @@ export const defaultGym:GymInterface={
     price:0,
     rating:3,
     features:[],
-    type:"gym"
+    type:"gym",
+    gallery:[]
 }

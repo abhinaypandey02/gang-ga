@@ -190,14 +190,14 @@ export default function AllGymsPage() {
                                         className="card mt-4 mx-auto  rounded-0"
                                         style={{ maxWidth: "1000px" }}
                                     >
-                                        <div className="row g-0">
-                                            <div className="col-md-4 p-4">
+                                        <div className="row g-0 align-items-center">
+                                            <div className="col-md-4">
                                                 <img
-                                                    className="img-fluid"
-                                                    src="https://images.unsplash.com/photo-1540496905036-5937c10647cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                                                    className="img-fluid m-4"
+                                                    src={gym.gallery.length>0?gym.gallery[0]:"https://static.toiimg.com/thumb/msid-78118340,imgsize-896783,width-800,height-600,resizemode-75/78118340.jpg"}
                                                 />
                                             </div>
-                                            <div className="col-md-8">
+                                            <div className="col-md-8 py-2">
                                                 <div className="card-body text-start">
                                                     <h4 className="card-title ">
                                                         <strong>
@@ -205,6 +205,7 @@ export default function AllGymsPage() {
                                                         </strong>
                                                     </h4>
                                                     <h6 className="text-dark">
+                                                        
                                                         <img className="m-1" src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
                                                         {gym.location.locality},{" "}
                                                         {gym.location.area},{" "}

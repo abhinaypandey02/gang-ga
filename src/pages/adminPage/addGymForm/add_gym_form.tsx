@@ -5,6 +5,7 @@ import CheckboxLabels from "../../../components/materialuiComponents/checkBox/ch
 import { defaultGym } from "../../../interfaces/gym";
 import { addGym } from "../../../utils/firebase/firestore";
 import { v4 } from "uuid";
+import { uploadGymImages } from "../../../utils/firebase/storage";
 export default function AddGymForm() {
     const {
         register,
@@ -13,7 +14,17 @@ export default function AddGymForm() {
         formState: { errors },
     } = useForm();
     const [loading, setLoading] = useState(false);
-    function onSubmit(data: any) {
+    const [images, setImages] = useState<any[]>([]);
+    function onImageChange(e: any) {
+        const file = e.target.files[0];
+        console.log(file);
+        if (!file.type.startsWith("image/") || !file) {
+            alert("Kindly provide a Image file");
+            return;
+        }
+        setImages((old) => [...old, file]);
+    }
+    async function onSubmit(data: any) {
         setLoading(true);
         const tempGym = { ...defaultGym };
         tempGym.uid = v4();
@@ -26,12 +37,15 @@ export default function AddGymForm() {
         tempGym.location.state = data.state;
         tempGym.location.latitude = parseInt(data.latitude);
         tempGym.location.longitude = parseInt(data.longitude);
-        tempGym.type=data.type;
+        tempGym.type = data.type;
         tempGym.features = data.features
             .split(",")
             .map((feature: string) => feature.trim());
+
+        tempGym.gallery=await uploadGymImages(tempGym.uid,images);    
         addGym(tempGym).then(() => {
             reset();
+            setImages([]);
             alert("Gym added!");
             setLoading(false);
         });
@@ -126,8 +140,12 @@ export default function AddGymForm() {
                     {...register("type")}
                     className="bg-transparent text-light"
                 >
-                    <option value="gym" className="text-dark">Gym</option>
-                    <option value="park" className="text-dark">Park</option>
+                    <option value="gym" className="text-dark">
+                        Gym
+                    </option>
+                    <option value="park" className="text-dark">
+                        Park
+                    </option>
                 </Form.Control>
             </Form.Group>
             <Form.Group className="mb-2">
@@ -140,6 +158,33 @@ export default function AddGymForm() {
                     placeholder="Description"
                     className="bg-transparent text-light"
                 />
+            </Form.Group>
+            <Form.Group className="mb-2">
+                <Form.Label>Gallery</Form.Label>
+                <input
+                    type="file"
+                    onChange={onImageChange}
+                    className="d-none"
+                    id="choose_img"
+                />
+                <Button
+                    variant={"info"}
+                    onClick={() =>
+                        document.getElementById("choose_img")?.click()
+                    }
+                    className="rounded-circle m-2"
+                >
+                    +
+                </Button>
+                <div>
+                    {images.map((image) => (
+                        <img
+                            height={50}
+                            src={URL.createObjectURL(image)}
+                            alt="gym"
+                        />
+                    ))}
+                </div>
             </Form.Group>
             <Button
                 disabled={loading}
