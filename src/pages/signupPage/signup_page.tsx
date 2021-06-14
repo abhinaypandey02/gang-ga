@@ -8,8 +8,10 @@ import { signUpWithEmailPassword } from "../../utils/firebase/auth";
 import { defaultUser } from "../../interfaces/user";
 import {v4} from 'uuid';
 import { addUser } from "../../utils/firebase/firestore";
+import { useUser } from "../../contexts/user_context";
 export default function SignupPage() {
     const his=useHistory();
+    const [user,setUser]=useUser();
     const {
         register,
         handleSubmit,
@@ -22,6 +24,7 @@ export default function SignupPage() {
         user.uid=v4();
         signUpWithEmailPassword(data.email,data.password).then(()=>{
             addUser(user).then(()=>{
+                setUser(user)
                 his.push('/')
             }).catch(err=>console.error(err))
         });

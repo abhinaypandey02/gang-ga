@@ -14,7 +14,9 @@ export default function NavigationBar() {
             variant="dark"
             expand="lg"
         >
-            <Navbar.Brand href="#"><span className="h2">Gang-ga</span></Navbar.Brand>
+            <Navbar.Brand href="#">
+                <span className="h2">Gang-ga</span>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
@@ -24,17 +26,18 @@ export default function NavigationBar() {
                     <Nav.Link as={Link} to="/search">
                         Gyms
                     </Nav.Link>
-                    {user.name === "" && (
+                    {!user && (
                         <Nav.Link as={Link} to="/login">
                             Login
                         </Nav.Link>
                     )}
-                    {user.name === "" && (
+                    {!user && (
                         <Nav.Link as={Link} to="/signup">
                             Signup
                         </Nav.Link>
                     )}
-                    {user.name !== "" && (
+
+                    {user && (
                         <Nav.Link as={Link} to="/user">
                             {user.name}
                         </Nav.Link>

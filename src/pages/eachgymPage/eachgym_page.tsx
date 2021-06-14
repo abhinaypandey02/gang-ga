@@ -42,7 +42,7 @@ export default function EachGymPage() {
     }
     async function displayRazorpay() {
         setLoading(true);
-        if (!gym || user.name == "") return;
+        if (!gym || !user) return;
         const res = await loadScript(
             "https://checkout.razorpay.com/v1/checkout.js"
         );
@@ -142,7 +142,7 @@ export default function EachGymPage() {
     }
 
     function book() {
-        if (user.name === "") {
+        if (!user) {
             alert("Please log in to continue!");
             his.push("/login");
         } else displayRazorpay();

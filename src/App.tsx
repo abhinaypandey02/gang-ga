@@ -12,6 +12,7 @@ import AdminPage from "./pages/adminPage/admin_page";
 import UserProfile from "./pages/userPage/user_page";
 function App() {
     const [user] = useUser();
+    if(user===undefined) return <div>Loading Site</div>
     return (
         <div className="App">
             <div className="d-flex flex-column" id="maindiv">
@@ -31,28 +32,28 @@ function App() {
                             <EachGymPage />
                         </Route>
                         <Route path="/signup">
-                            {user.name === "" ? (
+                            {!user ? (
                                 <SignupPage />
                             ) : (
                                 <Redirect to="/" />
                             )}
                         </Route>
                         <Route path="/login">
-                            {user.name === "" ? (
+                            {!user ? (
                                 <LoginPage />
                             ) : (
                                 <Redirect to="/" />
                             )}
                         </Route>
                         <Route path="/admin">
-                            {user.name !== "" ? (
+                            {user ? (
                                 <AdminPage />
                             ) : (
                                 <Redirect to="/" />
                             )}
                         </Route>
                         <Route path="/user">
-                            {user.name !== "" ? (
+                            {user ? (
                                 <UserProfile />
                             ) : (
                                 <Redirect to="/" />

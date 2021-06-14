@@ -136,17 +136,17 @@ export default function AllGymsPage() {
                         <Nav.Link as={Link} to="/search">
                             Gyms
                         </Nav.Link>
-                        {user.name === "" && (
+                        {!user && (
                             <Nav.Link as={Link} to="/login">
                                 Login
                             </Nav.Link>
                         )}
-                        {user.name === "" && (
+                        {!user && (
                             <Nav.Link as={Link} to="/login">
                                 Signup
                             </Nav.Link>
                         )}
-                        {user.name !== "" && (
+                        {user && (
                             <Nav.Link as={Link} to="/user">
                                 {user.name}
                             </Nav.Link>
@@ -194,7 +194,11 @@ export default function AllGymsPage() {
                                             <div className="col-md-4">
                                                 <img
                                                     className="img-fluid m-4"
-                                                    src={gym.gallery.length>0?gym.gallery[0]:"https://static.toiimg.com/thumb/msid-78118340,imgsize-896783,width-800,height-600,resizemode-75/78118340.jpg"}
+                                                    src={
+                                                        gym.gallery.length > 0
+                                                            ? gym.gallery[0]
+                                                            : "https://static.toiimg.com/thumb/msid-78118340,imgsize-896783,width-800,height-600,resizemode-75/78118340.jpg"
+                                                    }
                                                 />
                                             </div>
                                             <div className="col-md-8 py-2">
@@ -205,8 +209,10 @@ export default function AllGymsPage() {
                                                         </strong>
                                                     </h4>
                                                     <h6 className="text-dark">
-                                                        
-                                                        <img className="m-1" src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+                                                        <img
+                                                            className="m-1"
+                                                            src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png"
+                                                        />
                                                         {gym.location.locality},{" "}
                                                         {gym.location.area},{" "}
                                                         {gym.location.district},{" "}

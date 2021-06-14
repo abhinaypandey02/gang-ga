@@ -27,14 +27,18 @@ export default function UserProfile() {
         setImage(file);
     }
     function saveImage() {
-        if (image) {
-            uploadImage(user,image).then((pp)=>{setUser((old:UserInterface)=>({...old,pp}));setImage(null)})
+        if (image && user) {
+            uploadImage(user, image).then((pp) => {
+                setUser((old: UserInterface) => ({ ...old, pp }));
+                setImage(null);
+            });
         }
     }
     useEffect(() => {
-        getEnrolledSessionByUser(user.uid).then((docs) => {
-            setEnrolledSessions(docs);
-        });
+        if (user)
+            getEnrolledSessionByUser(user.uid).then((docs) => {
+                setEnrolledSessions(docs);
+            });
     }, [user]);
     return (
         <div>
@@ -53,8 +57,8 @@ export default function UserProfile() {
                                 src={
                                     image
                                         ? URL.createObjectURL(image)
-                                        : user.pp
-                                        ? user.pp
+                                        : user?.pp
+                                        ? user?.pp
                                         : "https://media1.popsugar-assets.com/files/thumbor/ZZIwMIdF89oy3PbWdGh243VpXtM/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/11/15/003/n/42941911/b18d267b5a0cc80012d284.78878316_edit_img_image_44263708_1510761331/i/Hot-Guys-Shirtless-Gym-Pictures.jpg"
                                 }
                                 className="img-fluid "
@@ -114,8 +118,8 @@ export default function UserProfile() {
                             )}
                         </div>
 
-                        <h2 className="text-light m-2">{user.name}</h2>
-                        <h5 className="text-light">{user.email}</h5>
+                        <h2 className="text-light m-2">{user?.name}</h2>
+                        <h5 className="text-light">{user?.email}</h5>
                         <Button
                             variant="info"
                             onClick={signOut}
