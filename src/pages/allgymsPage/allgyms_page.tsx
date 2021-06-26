@@ -103,7 +103,7 @@ export default function AllGymsPage() {
             <Navbar
                 id="nav1"
                 sticky="top"
-                className="pt-md-5 px-5 d-flex"
+                className="pt-md-5 px-md-5 d-flex"
                 bg="transparent"
                 variant="dark"
                 expand="lg"
@@ -113,7 +113,7 @@ export default function AllGymsPage() {
                 </Navbar.Brand>
                 <div className="d-flex w-75">
                     <input
-                        className="form-control px-md-3 m-2 py-2 rounded-pill w-100 bg-transparent text-light "
+                        className="form-control px-md-3 m-md-2 py-2 rounded-pill w-100 bg-transparent text-light "
                         type="text"
                         placeholder="Search for the best GYM near you"
                         aria-label="Search"
@@ -122,7 +122,7 @@ export default function AllGymsPage() {
                             setSearchTerm(e.target.value);
                         }}
                     />
-                    <Button className="rounded-pill m-2" variant="contained">
+                    <Button className="rounded-pill m-md-2 ml-1" variant="contained">
                         Go
                     </Button>
                 </div>
@@ -193,7 +193,7 @@ export default function AllGymsPage() {
                                         <div className="row g-0 align-items-center">
                                             <div className="col-md-4">
                                                 <img
-                                                    className="img-fluid m-4"
+                                                    className="img-fluid m-md-4"
                                                     src={
                                                         gym.gallery.length > 0
                                                             ? gym.gallery[0]
