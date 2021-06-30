@@ -1,0 +1,20 @@
+.card{
+    background: #abbaab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffffff7c, #b0d5e673);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffffff7c, #b0c1e67a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: none !important;
+    transition: all 500ms ease-in-out;
+    color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    
+
+}
+.card:hover{
+    transform:translateY(-5px);
+}
+#filterbox{
+    background: rgba(255, 255, 255, 0.466);
+    color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+}
