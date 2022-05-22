@@ -2,8 +2,9 @@ import "./navigation_bar.css";
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { useUser } from "../../contexts/user_context";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { signOut } from "../../utils/firebase/auth";
+import logo from './logo.png';
 export default function NavigationBar() {
     const [user] = useUser();
     return (
@@ -15,7 +16,7 @@ export default function NavigationBar() {
             expand="lg"
         >
             <Navbar.Brand href="#">
-                <span className="h2">Gang-ga</span>
+                <span className="h2"><img src ={logo}/></span>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -38,9 +39,12 @@ export default function NavigationBar() {
                     )}
 
                     {user && (
-                        <Nav.Link as={Link} to="/user">
+                        <Nav.Link as={Link} to="/Dashboard">
                             {user.name}
                         </Nav.Link>
+                    )}
+                    {user && (
+                        <Nav.Link as={Link} to="/Gyms"></Nav.Link>
                     )}
                 </Nav>
             </Navbar.Collapse>

@@ -109,7 +109,7 @@ export default function AllGymsPage() {
                 expand="lg"
             >
                 <Navbar.Brand href="#" className="d-none d-sm-none d-md-block ">
-                    <span className="h2">Gang-ga</span>
+                    <span className="h2">vyayamshala</span>
                 </Navbar.Brand>
                 <div className="d-flex w-75">
                     <input
