@@ -27,7 +27,7 @@ export default function LandingPage() {
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="form-control px-3 py-2 rounded-pill w-50 mx-auto bg-transparent text-light "
                                 type="text"
-                                placeholder="Search for the best GYMs and PARKs near you"
+                                placeholder="Search for the best GYMs near you"
                                 aria-label="Search"
                             />
                             <br />
@@ -50,7 +50,7 @@ export default function LandingPage() {
                         <div className="col-lg-3  p-3">
                             <div className="card" id="lcard">
                                 <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
+                                    <h5 className="card-title">Gyms and breakfast</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">
                                         Card subtitle
                                     </h6>
@@ -65,7 +65,7 @@ export default function LandingPage() {
                         <div className="col-lg-3 p-3">
                             <div className="card" id="lcard">
                                 <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
+                                    <h5 className="card-title">Yoga and meditation</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">
                                         Card subtitle
                                     </h6>
@@ -80,7 +80,7 @@ export default function LandingPage() {
                         <div className="col-lg-3  p-3">
                             <div className="card" id="lcard">
                                 <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
+                                    <h5 className="card-title">Happiness</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">
                                         Card subtitle
                                     </h6>
@@ -93,100 +93,7 @@ export default function LandingPage() {
                             </div>
                         </div>
                     </div>
-                    <div className="row d-flex justify-content-around p-3">
-                        <div className="col-lg-3  p-3">
-                            <div className="card" id="lcard">
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <h6 className="card-subtitle mb-2 text-muted">
-                                        Card subtitle
-                                    </h6>
-                                    <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3  p-3">
-                            <div className="card " id="lcard">
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <h6 className="card-subtitle mb-2 text-muted">
-                                        Card subtitle
-                                    </h6>
-                                    <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3  p-3">
-                            <div className="card" id="lcard">
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <h6 className="card-subtitle mb-2 text-muted">
-                                        Card subtitle
-                                    </h6>
-                                    <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row d-flex justify-content-around  p-3">
-                        <div className="col-lg-3 p-3">
-                            <div className="card " id="lcard">
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <h6 className="card-subtitle mb-2 text-muted">
-                                        Card subtitle
-                                    </h6>
-                                    <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 p-3">
-                            <div className="card" id="lcard">
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <h6 className="card-subtitle mb-2 text-muted">
-                                        Card subtitle
-                                    </h6>
-                                    <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3  p-3">
-                            <div className="card" id="lcard">
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <h6 className="card-subtitle mb-2 text-muted">
-                                        Card subtitle
-                                    </h6>
-                                    <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
