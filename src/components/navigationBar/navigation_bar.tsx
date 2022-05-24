@@ -39,12 +39,9 @@ export default function NavigationBar() {
                     )}
 
                     {user && (
-                        <Nav.Link as={Link} to="/Dashboard">
+                        <Nav.Link as={Link} to="/user">
                             {user.name}
                         </Nav.Link>
-                    )}
-                    {user && (
-                        <Nav.Link as={Link} to="/Gyms"></Nav.Link>
                     )}
                 </Nav>
             </Navbar.Collapse>
