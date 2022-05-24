@@ -3,6 +3,9 @@ import { Button, Card } from "react-bootstrap";
 import { useHistory } from "react-router";
 import NavigationBar from "../../components/navigationBar/navigation_bar";
 import "./landing_page.css";
+import gym from './gym.jpg';
+import yoga from './yoga.jpg';
+import happy from './happy.jpg';
 export default function LandingPage() {
     const his = useHistory();
     const [searchTerm, setSearchTerm] = useState("");
@@ -44,21 +47,19 @@ export default function LandingPage() {
             </div>
             <div className="container-fluid min-vh-100 pt-4">
                 <div className="container text-center text-light">
-                    <h1>From over 54+ States to choose from</h1>
-                    <br />
+                    <br/>
                     <div className="row d-flex justify-content-around p-3">
                         <div className="col-lg-3  p-3">
                             <div className="card" id="lcard">
                                 <div className="card-body">
                                     <h5 className="card-title">Gyms and breakfast</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">
-                                        Card subtitle
+                                        Search Gyms near you and breakfast service from us.
+                                        
                                     </h6>
-                                    <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
-                                    </p>
+                                    <p className="card-text"></p><img src = {gym}/>
+                                       
+                                    
                                 </div>
                             </div>
                         </div>
@@ -67,13 +68,11 @@ export default function LandingPage() {
                                 <div className="card-body">
                                     <h5 className="card-title">Yoga and meditation</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">
-                                        Card subtitle
+                                        Search your favorite yoga instructors or meditation guru's at one place.
                                     </h6>
                                     <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
                                     </p>
+                                    <img src = {yoga}/>
                                 </div>
                             </div>
                         </div>
@@ -82,13 +81,12 @@ export default function LandingPage() {
                                 <div className="card-body">
                                     <h5 className="card-title">Happiness</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">
-                                        Card subtitle
+                                        Are you unhappy? Try this new service and feel better.
                                     </h6>
                                     <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
+                                    
                                     </p>
+                                    <img src = {happy}/>
                                 </div>
                             </div>
                         </div>
