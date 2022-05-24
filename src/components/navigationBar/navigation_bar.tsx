@@ -10,17 +10,17 @@ export default function NavigationBar() {
     return (
         <Navbar
             id="nav1"
-            className="pt-md-5 px-md-5"
-            bg="dark"
-            variant="dark"
+            className="pb-5 px-md-5"
+            bg="light"
+            variant="light"
             expand="lg"
         >
             <Navbar.Brand href="#">
-                <span className="h2"><img src ={logo}/></span>
+                <img height={100} src ={logo}/>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ms-auto">
+                <Nav className="ms-auto font-weight-bold">
                     <Nav.Link as={Link} to="/">
                         Home
                     </Nav.Link>
@@ -39,12 +39,9 @@ export default function NavigationBar() {
                     )}
 
                     {user && (
-                        <Nav.Link as={Link} to="/Dashboard">
+                        <Nav.Link as={Link} to="/user">
                             {user.name}
                         </Nav.Link>
-                    )}
-                    {user && (
-                        <Nav.Link as={Link} to="/Gyms"></Nav.Link>
                     )}
                 </Nav>
             </Navbar.Collapse>

@@ -104,8 +104,8 @@ export default function AllGymsPage() {
                 id="nav1"
                 sticky="top"
                 className="pt-md-5 px-md-5 d-flex"
-                bg="transparent"
-                variant="dark"
+                bg="light"
+                variant="light"
                 expand="lg"
             >
                 <Navbar.Brand href="#" className="d-none d-sm-none d-md-block ">
@@ -113,7 +113,7 @@ export default function AllGymsPage() {
                 </Navbar.Brand>
                 <div className="d-flex w-75">
                     <input
-                        className="form-control px-md-3 m-md-2 py-2 rounded-pill w-100 bg-transparent text-light "
+                        className="form-control px-md-3 m-md-2 py-2 rounded-pill w-100 bg-transparent text-dark border-dark "
                         type="text"
                         placeholder="Search for the best GYM near you"
                         aria-label="Search"
@@ -129,7 +129,7 @@ export default function AllGymsPage() {
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto">
+                    <Nav className="ms-auto font-weight-bold">
                         <Nav.Link as={Link} to="/">
                             Home
                         </Nav.Link>

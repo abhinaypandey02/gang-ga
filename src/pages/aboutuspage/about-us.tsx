@@ -11,7 +11,7 @@ export default function LandingPage() {
                     <div className="col-12 text-center">
                         <h1 className="display-4 mx-auto mb-5">
                             <strong>
-                                Find the best gyms near you in no time.
+                               
                             </strong>
                         </h1>
                        
