@@ -1,7 +1,7 @@
 #scard{
-    background: #abbaab;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ffffff7c, #b0d5e673);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ffffff7c, #b0c1e67a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #37a4db;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #1e5c727c, #1b93ca73);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #68e3f37c, #09286d7a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border: none !important;
     color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

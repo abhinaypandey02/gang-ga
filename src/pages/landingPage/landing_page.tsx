@@ -3,6 +3,9 @@ import { Button, Card } from "react-bootstrap";
 import { useHistory } from "react-router";
 import NavigationBar from "../../components/navigationBar/navigation_bar";
 import "./landing_page.css";
+import gym from './gym.jpg';
+import yoga from './yoga.jpg';
+import happy from './happy.jpg';
 export default function LandingPage() {
     const his = useHistory();
     const [searchTerm, setSearchTerm] = useState("");
@@ -44,37 +47,33 @@ export default function LandingPage() {
             </div>
             <div className="container-fluid pt-4">
                 <div className="container text-center text-dark">
-                    <h1>From over 54+ States to choose from</h1>
+                    
                     <br />
                     <div className="d-flex justify-content-around flex-wrap flex-lg-nowrap p-3">
                             <div className="card" id="lcard">
                                 <div className="card-body">
                                     <h5 className="card-title">Gyms and breakfast</h5>
                                     <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
+                                        
                                     </p>
+                                    <img src = {gym}/>
                                 </div>
                             </div>
                             <div className="card" id="lcard">
                                 <div className="card-body">
                                     <h5 className="card-title">Yoga and meditation</h5>
                                     <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
                                     </p>
+                                    <img src = {yoga}/>
                                 </div>
                             </div>
                             <div className="card" id="lcard">
                                 <div className="card-body">
                                     <h5 className="card-title">Happiness</h5>
                                     <p className="card-text">
-                                        Some quick example text to build on the
-                                        card title and make up the bulk of the
-                                        card's content.
+                                    
                                     </p>
+                                    <img src = {happy}/>
                                 </div>
                         </div>
                     </div>
