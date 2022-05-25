@@ -71,7 +71,6 @@ export default function LandingPage() {
                                 <div className="card-body">
                                     <h5 className="card-title">Happiness</h5>
                                     <p className="card-text">
-                                    
                                     </p>
                                     <img src = {happy}/>
                                 </div>

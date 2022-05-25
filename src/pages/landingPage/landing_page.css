@@ -10,9 +10,8 @@
     min-width: 20rem;
     transition: all ease-in-out .4s ;
     background: transparent;  /* fallback for old browsers */;
-    border: 1px solid #53b7ce !important;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
- 
+    border: 5px solid #53b7ce !important;
+    box-shadow: rgba(72, 193, 199, 0.632) 10px 15px 24px;
     padding: 40px;
     border-radius: 20px!important;
     margin: 1em 10px;
