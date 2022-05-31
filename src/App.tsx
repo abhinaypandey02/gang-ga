@@ -10,6 +10,7 @@ import LoginPage from "./pages/loginPage/login_page";
 import { useUser } from "./contexts/user_context";
 import AdminPage from "./pages/adminPage/admin_page";
 import UserProfile from "./pages/userPage/user_page";
+import AboutUs from "./pages/aboutuspage/about_us";
 function App() {
     const [user] = useUser();
     if(user===undefined) return <div>Loading Site</div>
@@ -58,6 +59,9 @@ function App() {
                             ) : (
                                 <Redirect to="/" />
                             )}
+                        </Route>
+                        <Route exact path="/aboutus">
+                            <AboutUs/>
                         </Route>
                     </Switch>
                 </HashRouter>
