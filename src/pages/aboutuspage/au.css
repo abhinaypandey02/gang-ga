@@ -1,0 +1,53 @@
+.body
+{
+    padding: 100px;
+}
+.bod{
+    font-size: larger;
+    text-align: justify;
+    margin-top: 25px;
+}
+.m1{
+    
+    border: 5px;
+    border-style: dotted;
+    border-color: whitesmoke;
+    border-radius: 20px;
+    padding: 15px;
+}
+.h{
+    border: 5px solid;
+    border-style: dotted;
+    border-radius: 20px;
+    padding: 20px;
+}
+.bod-botm{
+    font-size: larger;
+    text-align: justify;
+    margin-top: 25px;
+     padding-bottom: 25px;
+}
+.bod1{
+    font-size: larger;
+    text-align: justify;
+    margin-top: 25px;
+    padding-bottom: 25px;
+}
+.bod2{
+    font-size: larger;
+    text-align: justify;
+    margin-top: 25px;
+    padding-bottom: 25px;
+}
+.bod3{
+    font-size: larger;
+    text-align: justify;
+    margin-top: 25px;
+    
+}
+.bod4{
+    font-size: larger;
+    text-align: justify;
+    
+    
+}

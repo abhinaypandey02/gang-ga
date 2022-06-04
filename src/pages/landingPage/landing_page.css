@@ -31,3 +31,24 @@
     font-weight: bold;
     font-size: x-large;
 }
+.head{
+    font-size: 20px;
+}
+.p1
+{
+    justify-content: center;
+    padding: 25px;
+    margin-bottom: 15px;
+}
+.p2
+{
+    justify-content: center;
+    padding: 25px;
+    margin-bottom: 15px;
+}
+.p3
+{
+    justify-content: center;
+    padding: 25px;
+    margin-bottom: 15px;
+}
