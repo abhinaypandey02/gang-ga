@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import { Link } from "react-router-dom";
 import V from "./logo.png";
+import bg2 from "./bg2.jpg";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
@@ -17,6 +18,7 @@ import { useHistory, useParams } from "react-router";
 import { useUser } from "../../contexts/user_context";
 import { signOut } from "../../utils/firebase/auth";
 import { usePosition } from "../../components/usePosition/usePosition";
+import NavigationBar from "../../components/navigationBar/navigation_bar";
 function rad(x: number) {
   return (x * Math.PI) / 180;
 }
@@ -32,9 +34,9 @@ function getDistance(
   var a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(rad(rideLat)) *
-      Math.cos(rad(currLat)) *
-      Math.sin(dLong / 2) *
-      Math.sin(dLong / 2);
+    Math.cos(rad(currLat)) *
+    Math.sin(dLong / 2) *
+    Math.sin(dLong / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = (R * c) / 1000;
   return d; // returns the distance in meter
@@ -100,7 +102,7 @@ export default function AllGymsPage() {
   }, [params]);
   return (
     <div>
-      <Navbar
+      {/* <Navbar
         id="nav1"
         sticky="top"
         className="pt-md-5 px-md-5 d-flex"
@@ -155,7 +157,34 @@ export default function AllGymsPage() {
             )}
           </Nav>
         </Navbar.Collapse>
-      </Navbar>
+      </Navbar> */}
+
+      <NavigationBar />
+
+      <section className="allgyms-hero-section">
+        <img src={bg2}></img>
+        <div className="content">
+          <h1>Find the best gyms near you in no time</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sequi esse quod. Ullam rem repellat dolorum animi debitis ea quas dolor, explicabo obcaecati quibusdam, quod accusamus, nihil culpa iusto illo.</p>
+          <div className="d-flex w-75">
+            <input
+              className="form-control px-md-3 m-md-2 py-2 rounded-pill w-100 bg-transparent text-white"
+              type="text"
+              placeholder="Search for the best GYM near you"
+              aria-label="Search"
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+            />
+            <Button className="rounded-pill m-md-2 ml-1" variant="contained">
+              Search
+            </Button>
+          </div>
+        </div>
+      </section>
+
+
       <div className="container-fluid">
         <div className="row d-flex justify-content-center">
           <div className="col-md-3 p-3 m-lg-3 text-start" id="filterbox">
@@ -212,6 +241,8 @@ export default function AllGymsPage() {
                             km
                           </h6>
 
+                          <div>
+
                           <div className="badge bg-success py-auto m-2">
                             <h6 className="py-auto my-auto">
                               {gym.rating}
@@ -223,12 +254,14 @@ export default function AllGymsPage() {
                               {gym.type}
                             </h6>
                           </div>
+                          </div>
                           <div className="my-3">
                             {gym.features.map((feature) => (
                               <span className="text-capitalize m-1">
                                 <CheckCircleOutlineIcon
                                   className="m-1"
                                   fontSize="small"
+                                  htmlColor="green"
                                 />
                                 {feature}
                               </span>

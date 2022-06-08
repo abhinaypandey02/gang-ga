@@ -1,20 +1,58 @@
 .card{
-    background: #abbaab;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ffffff7c, #b0d5e673);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ffffff7c, #b0c1e67a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border: none !important;
-    transition: all 500ms ease-in-out;
-    color: white;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    
-
+    transition: all 100ms ease-in-out;
+    border-radius: 10px !important;
 }
 .card:hover{
     transform:translateY(-5px);
 }
 #filterbox{
-    background: rgba(255, 255, 255, 0.466);
-    color: white;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background: #fff;
+    border-radius: 5px ;
+}
 
+
+.allgyms-hero-section {
+    color: white;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    padding: 0 4rem;
+    /* overflow: auto; */
+}
+
+.allgyms-hero-section .content {
+    max-width: 40vw;
+    height: 100%;
+    padding-top: 6rem;
+}
+.allgyms-hero-section .content h1 {
+    font-size: 4rem;
+}
+.allgyms-hero-section .content p {
+    text-align: left;
+}
+
+.allgyms-hero-section img{
+    display: flex;
+    flex-shrink: 0;
+    width: 800px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+@media screen and (max-width: 864px) {
+    .allgyms-hero-section .content {
+        max-width: 100vw;
+    }
+
+    .allgyms-hero-section img {
+        width: 100%;
+        position: relative;
+    }
+    .allgyms-hero-section .content h1 {
+        font-size: 2rem;
+    }
 }
