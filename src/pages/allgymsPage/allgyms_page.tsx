@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import { Link } from "react-router-dom";
 import V from "./logo.png";
-import bg2 from "./bg2.jpg";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
@@ -102,17 +101,17 @@ export default function AllGymsPage() {
   }, [params]);
   return (
     <div>
-      {/* <Navbar
+      <Navbar
         id="nav1"
         sticky="top"
-        className="pt-md-5 px-md-5 d-flex"
+        className="px-md-5 d-flex"
         bg="light"
         variant="light"
         expand="lg"
       >
         <Navbar.Brand href="#" className="d-none d-sm-none d-md-block ">
           <span className="h2">
-            <img src={V} />
+            <img src={V} width="100" />
           </span>
         </Navbar.Brand>
         <div className="d-flex w-75">
@@ -126,7 +125,7 @@ export default function AllGymsPage() {
               setSearchTerm(e.target.value);
             }}
           />
-          <Button className="rounded-pill m-md-2 ml-1" variant="contained">
+          <Button className="rounded-pill m-md-2 ml-1 bg-dark text-white" variant="contained">
             Go
           </Button>
         </div>
@@ -157,33 +156,7 @@ export default function AllGymsPage() {
             )}
           </Nav>
         </Navbar.Collapse>
-      </Navbar> */}
-
-      <NavigationBar />
-
-      <section className="allgyms-hero-section">
-        <img src={bg2}></img>
-        <div className="content">
-          <h1>Find the best gyms near you in no time</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sequi esse quod. Ullam rem repellat dolorum animi debitis ea quas dolor, explicabo obcaecati quibusdam, quod accusamus, nihil culpa iusto illo.</p>
-          <div className="d-flex w-75">
-            <input
-              className="form-control px-md-3 m-md-2 py-2 rounded-pill w-100 bg-transparent text-white"
-              type="text"
-              placeholder="Search for the best GYM near you"
-              aria-label="Search"
-              value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-              }}
-            />
-            <Button className="rounded-pill m-md-2 ml-1" variant="contained">
-              Search
-            </Button>
-          </div>
-        </div>
-      </section>
-
+      </Navbar>
 
       <div className="container-fluid">
         <div className="row d-flex justify-content-center">
