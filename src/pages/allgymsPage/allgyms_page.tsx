@@ -17,6 +17,7 @@ import { useHistory, useParams } from "react-router";
 import { useUser } from "../../contexts/user_context";
 import { signOut } from "../../utils/firebase/auth";
 import { usePosition } from "../../components/usePosition/usePosition";
+import NavigationBar from "../../components/navigationBar/navigation_bar";
 function rad(x: number) {
   return (x * Math.PI) / 180;
 }
@@ -32,9 +33,9 @@ function getDistance(
   var a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(rad(rideLat)) *
-      Math.cos(rad(currLat)) *
-      Math.sin(dLong / 2) *
-      Math.sin(dLong / 2);
+    Math.cos(rad(currLat)) *
+    Math.sin(dLong / 2) *
+    Math.sin(dLong / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = (R * c) / 1000;
   return d; // returns the distance in meter
@@ -103,14 +104,14 @@ export default function AllGymsPage() {
       <Navbar
         id="nav1"
         sticky="top"
-        className="pt-md-5 px-md-5 d-flex"
+        className="px-md-5 d-flex"
         bg="light"
         variant="light"
         expand="lg"
       >
         <Navbar.Brand href="#" className="d-none d-sm-none d-md-block ">
           <span className="h2">
-            <img src={V} />
+            <img src={V} width="100" />
           </span>
         </Navbar.Brand>
         <div className="d-flex w-75">
@@ -124,7 +125,7 @@ export default function AllGymsPage() {
               setSearchTerm(e.target.value);
             }}
           />
-          <Button className="rounded-pill m-md-2 ml-1" variant="contained">
+          <Button className="rounded-pill m-md-2 ml-1 bg-dark text-white" variant="contained">
             Go
           </Button>
         </div>
@@ -156,6 +157,7 @@ export default function AllGymsPage() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+
       <div className="container-fluid">
         <div className="row d-flex justify-content-center">
           <div className="col-md-3 p-3 m-lg-3 text-start" id="filterbox">
@@ -212,6 +214,8 @@ export default function AllGymsPage() {
                             km
                           </h6>
 
+                          <div>
+
                           <div className="badge bg-success py-auto m-2">
                             <h6 className="py-auto my-auto">
                               {gym.rating}
@@ -223,12 +227,14 @@ export default function AllGymsPage() {
                               {gym.type}
                             </h6>
                           </div>
+                          </div>
                           <div className="my-3">
                             {gym.features.map((feature) => (
                               <span className="text-capitalize m-1">
                                 <CheckCircleOutlineIcon
                                   className="m-1"
                                   fontSize="small"
+                                  htmlColor="green"
                                 />
                                 {feature}
                               </span>

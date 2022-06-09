@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import NavigationBar from "../../components/navigationBar/navigation_bar";
 import "./landing_page.css";
 import gym from "./gym.jpg";
@@ -9,10 +9,24 @@ import bk from "./bk.jpg";
 import c1 from "./2.jpg";
 import c2 from "./3.webp";
 import happy from "./happy.jpg";
+import bg2 from "./bg2.jpg";
+
 import Carousel from "react-bootstrap/Carousel";
 export default function LandingPage() {
   const his = useHistory();
-  const [searchTerm, setSearchTerm] = useState("");
+  const params: any = useParams();
+
+  // const [searchTerm, setSearchTerm] = useState("");
+
+  const [searchTerm, setSearchTerm] = useState(
+    params.searchTerm ? params.searchTerm : ""
+  );
+  useEffect(() => {
+    if (params && params.searchTerm) {
+      setSearchTerm(params.searchTerm);
+    }
+  }, [params]);
+
   return (
     <div className="1">
       <div className="lk">
@@ -46,6 +60,32 @@ export default function LandingPage() {
           </div>
         </div> */}
       </div>
+
+
+      
+
+      <section className="allgyms-hero-section">
+        <img src={bg2}></img>
+        <div className="content">
+          <h1>Find the best gyms near you in no time</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sequi esse quod. Ullam rem repellat dolorum animi debitis ea quas dolor, explicabo obcaecati quibusdam, quod accusamus, nihil culpa iusto illo.</p>
+          <div className="d-flex w-75">
+            <input
+              className="form-control px-md-3 m-md-2 py-2 rounded-pill w-100 bg-transparent text-white"
+              type="text"
+              placeholder="Search for the best GYM near you"
+              aria-label="Search"
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+            />
+            <Button className="rounded-pill m-md-2 ml-1 bg-white" variant="contained">
+              Search
+            </Button>
+          </div>
+        </div>
+      </section>
 
       <Carousel fade>
         <Carousel.Item>

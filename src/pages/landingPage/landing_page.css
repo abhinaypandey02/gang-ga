@@ -1,7 +1,51 @@
 
 .form-control::-webkit-input-placeholder {
     color: rgb(57, 57, 57);
-  }
+}
+
+.allgyms-hero-section {
+    color: white;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    padding: 0 4rem;
+}
+
+.allgyms-hero-section .content {
+    max-width: 40vw;
+    height: 100%;
+    padding-top: 6rem;
+}
+.allgyms-hero-section .content h1 {
+    font-size: 4rem;
+}
+.allgyms-hero-section .content p {
+    text-align: left;
+}
+
+.allgyms-hero-section img{
+    display: flex;
+    flex-shrink: 0;
+    width: 800px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+@media screen and (max-width: 864px) {
+    .allgyms-hero-section .content {
+        max-width: 100vw;
+    }
+
+    .allgyms-hero-section img {
+        width: 100%;
+        position: relative;
+    }
+    .allgyms-hero-section .content h1 {
+        font-size: 2rem;
+    }
+}
 
 #lcard{
     color:black;

@@ -15,7 +15,7 @@ export default function NavigationBar() {
         <Nav className="main-nav">
           <Navbar.Brand href="/">
             <div className="logo">
-              <img height={140} src={logo} />
+              <img height={80} src={logo} />
             </div>
           </Navbar.Brand>
           <div className="box">
