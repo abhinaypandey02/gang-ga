@@ -71,7 +71,7 @@ export default function AddGymForm() {
                     name={id}
                     type={type}
                     placeholder={placeholder}
-                    className="rounded-pill bg-transparent text-light"
+                    className="rounded-pill bg-transparent"
                 />
             </Form.Group>
         );
@@ -138,7 +138,7 @@ export default function AddGymForm() {
                 <Form.Control
                     as="select"
                     {...register("type")}
-                    className="bg-transparent text-light"
+                    className="bg-transparent"
                 >
                     <option value="gym" className="text-dark">
                         Gym
@@ -156,7 +156,7 @@ export default function AddGymForm() {
                     id={"description"}
                     name={"description"}
                     placeholder="Description"
-                    className="bg-transparent text-light"
+                    className="bg-transparent"
                 />
             </Form.Group>
             <Form.Group className="mb-2">
@@ -189,7 +189,7 @@ export default function AddGymForm() {
             <Button
                 disabled={loading}
                 type="submit"
-                variant="light"
+                variant="dark"
                 className="rounded-pill my-2"
             >
                 Add

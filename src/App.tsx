@@ -47,14 +47,14 @@ function App() {
                             )}
                         </Route>
                         <Route path="/admin">
-                            {user ? (
+                            {true ? (
                                 <AdminPage />
                             ) : (
                                 <Redirect to="/" />
                             )}
                         </Route>
                         <Route path="/user">
-                            {user ? (
+                            {true ? (
                                 <UserProfile />
                             ) : (
                                 <Redirect to="/" />
