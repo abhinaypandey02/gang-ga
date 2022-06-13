@@ -1,0 +1,6 @@
+.linkList li a:hover {
+  display: inline-block;
+  text-decoration: none;
+  transform: scale(1.2);
+  transition: transform 0.15s;
+}
