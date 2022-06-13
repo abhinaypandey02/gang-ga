@@ -1,3 +1,7 @@
+.rounded-pill {
+  border-radius: 4px !important;
+}
+
 .App {
   text-align: center;
 }
@@ -36,6 +40,71 @@
     transform: rotate(360deg);
   }
 }
-#maindiv{
+#maindiv {
   background-color: #000;
+}
+/* Extras */
+
+#lcard {
+  color: black;
+  margin-top: 1rem;
+  min-height: 20rem;
+  min-width: 20rem;
+  transition: all ease-in-out 0.4s;
+  background: transparent; /* fallback for old browsers */
+  border: 5px solid #53b7ce !important;
+  box-shadow: rgba(72, 193, 199, 0.632) 10px 15px 24px;
+  padding: 40px;
+  border-radius: 20px !important;
+  margin: 1em 10px;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#lcard:hover {
+  transform: translateY(-10px);
+  background: #4798d5;
+  cursor: grab;
+}
+.card-title {
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.inp-btn input {
+  border-radius: 4px !important;
+}
+
+.inp-btn button {
+  background-color: var(--bs-gray) !important;
+  color: var(--light);
+  padding: 0px 35px;
+  width: fit-content;
+  border-radius: 4px !important;
+  transform: translateX(-95%) scale(0.85);
+}
+
+.inp-btn button:hover {
+  background-color: var(--light) !important;
+}
+
+.inp-btn {
+  display: grid !important;
+  grid-template-columns: 1fr 0px !important;
+}
+.card,
+#lcard.card {
+  border: 5px solid var(--light) !important;
+  box-shadow: var(--bs-gray) 3px 5px 7px;
+}
+
+#lcard.card:hover,
+.card:hover {
+  background-color: var(--light) !important;
+}
+
+.card-body img {
+  border-radius: 4px;
 }
