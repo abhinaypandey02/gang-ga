@@ -69,7 +69,7 @@ export default function LandingPage() {
         <div className="content">
           <h1>Find the best gyms near you in no time</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sequi esse quod. Ullam rem repellat dolorum animi debitis ea quas dolor, explicabo obcaecati quibusdam, quod accusamus, nihil culpa iusto illo.</p>
-          <div className="d-flex w-75">
+          <div className="d-flex w-75 inp-btn">
             <input
               className="form-control px-md-3 m-md-2 py-2 rounded-pill w-100 bg-transparent text-white"
               type="text"
