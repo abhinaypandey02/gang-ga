@@ -1,22 +1,16 @@
 #userinfo{
-    border: solid 2px ;
-    border-radius: 0% !important;
-    border-color: rgba(255, 255, 255, 0.699) !important;
-    height: 35rem;;
+    background-color: #fff;
+    height: 35rem;
+    margin: 1rem 0;
+    border-radius: 1rem !important;
 }
 #past{
-    background: #abbaab;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ffffff33, #b0d5e62f);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ffffff33, #b0c1e64b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #fff;
     border: none !important;
-    color: white;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    border-radius: 0% !important;
+    border-radius: 1rem !important;
 }
 .pastcard{
-    border: solid 1px white;
-    border-radius: none !important;
+    border-radius: 1rem !important;
     margin: 10px;
     padding: 10px;
-
 }

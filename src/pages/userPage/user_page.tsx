@@ -50,7 +50,6 @@ export default function UserProfile() {
                         id="userinfo"
                     >
                         <div
-                            style={{ height: 250, width: 250 }}
                             className="col-fluid rounded-circle overflow-hidden d-flex align-items-center"
                         >
                             <img
