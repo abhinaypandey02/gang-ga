@@ -1,21 +1,36 @@
-#nav1{
-    background-color: white;
+:root {
+  --logo-width: 100px;
 }
-.nav{
-    align-items: space-around;
-}
-.main-nav{
-    padding: 0 1rem 0 1rem;
-    width: 100%;
-    align-items: center;
-    font-size: larger;
-    justify-content: space-between;
 
+#nav1 {
+  background-color: white;
 }
-.box{
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
+.nav {
+  align-items: space-around;
+  grid-template-columns: var(--logo-width) auto;
+}
+.main-nav {
+  padding: 0 1rem 0 1rem;
+  width: 100%;
+  align-items: center;
+  font-size: larger;
+  justify-content: space-between;
+}
+.box {
+  display: grid;
+  width: 100%;
+  grid-auto-flow: column;
+  justify-content: end;
+  column-gap: 2%;
+}
+
+.box span {
+  border-radius: 3px;
+  padding: 2px 10px;
+}
+.box span.current {
+  background-color: var(--bs-gray);
+  color: var(--light);
 }
 /* #drop-down
 {
