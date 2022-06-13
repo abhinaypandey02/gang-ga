@@ -31,18 +31,18 @@ export default function SignupPage() {
 	}
 	return (
 		<div>
-			<NavigationBar />
-			<h2 className="text-light m-3">Signup</h2>
-			<div className="container d-flex flex-column">
-				<div className="col-md-7 mx-auto">
-					<div className="card text-start mx-auto" id="scard">
-						<div className="row g-0">
-							<div className="col">
-								<div className="d-flex justify-content-center">
-									<img src="logo.png" alt="Vyayamshala Logo" />
-								</div>
-								<div className="card-body">
-									<Form onSubmit={handleSubmit(onSubmit)}>
+      <NavigationBar signup={true} />
+      <h2 className="text-light m-3">Signup</h2>
+      <div className="container d-flex flex-column">
+        <div className="col-md-7 mx-auto">
+          <div className="card text-start mx-auto" id="scard">
+            <div className="row g-0">
+              <div className="col">
+                <div className="d-flex justify-content-center">
+                  <img src="logo.png" alt="Vyayamshala Logo" />
+                </div>
+                <div className="card-body">
+                  <Form onSubmit={handleSubmit(onSubmit)}>
 										<Form.Group
 											controlId="formBasicEmail"
 											className="mb-2"

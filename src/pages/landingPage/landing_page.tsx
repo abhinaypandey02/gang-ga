@@ -31,7 +31,7 @@ export default function LandingPage() {
     <div className="1">
       <div className="lk">
         <div className="row">
-          <NavigationBar />
+          <NavigationBar home={true} />
         </div>
 
         {/* <div className="cv">

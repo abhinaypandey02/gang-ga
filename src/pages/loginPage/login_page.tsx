@@ -16,8 +16,8 @@ export default function LoginPage() {
   }
   return (
     <div>
-      <NavigationBar />
-      <h2 className='text-light m-3'>Login to VYAYAMSHALA</h2>
+      <NavigationBar login={true} />
+      <h2 className="text-light m-3">Login to VYAYAMSHALA</h2>
       <div className="container">
         <div className="col-md-7 mx-auto">
           <div className="card text-start mx-auto" id='scard'>
