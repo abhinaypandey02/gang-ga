@@ -15,10 +15,10 @@ export default function AdminPage() {
         formState: { errors },
     } = useForm();
     return (
-        <div>
+        <div className="text-center">
             <NavigationBar />
             <h1 className='text-light display-2'>Admin Console</h1>
-            <hr/>
+            <hr style={{color: '#fff'}} />
             <div className="container">
             <h1 className='text-light m-3'>Add Gym/Park</h1>
 
