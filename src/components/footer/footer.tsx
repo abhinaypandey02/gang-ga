@@ -1,3 +1,5 @@
+import "./footer.css";
+
 export default function Footer() {
   return (
     <footer className="text-light">
@@ -7,7 +9,7 @@ export default function Footer() {
       >
         <div className="col-6 ">
           <h5 className="font-weight-bold">Features</h5>
-          <ul className="list-unstyled text-small">
+          <ul className="list-unstyled text-small linkList">
             <li>
               <a className="text-light" href="#">
                 Gyms
@@ -32,7 +34,7 @@ export default function Footer() {
         </div>
         <div className="col-6">
           <h5 className="font-weight-bold">Resources</h5>
-          <ul className="list-unstyled text-small">
+          <ul className="list-unstyled text-small linkList">
             <li>
               <a className="text-light" href="#">
                 About Us

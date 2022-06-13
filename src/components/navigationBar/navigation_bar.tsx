@@ -6,7 +6,20 @@ import { useUser } from "../../contexts/user_context";
 import { Link, NavLink } from "react-router-dom";
 import { signOut } from "../../utils/firebase/auth";
 import logo from "./logo.png";
-export default function NavigationBar() {
+
+interface NavProps {
+  home?: boolean;
+  vision?: boolean;
+  login?: boolean;
+  signup?: boolean;
+}
+
+export default function NavigationBar({
+  home = false,
+  vision = false,
+  login = false,
+  signup = false,
+}: NavProps) {
   const [user] = useUser();
   return (
     <Navbar id="nav1" className="nav" bg="light" variant="light" expand="lg">
@@ -20,32 +33,28 @@ export default function NavigationBar() {
           </Navbar.Brand>
           <div className="box">
             <Nav.Link as={Link} to="/">
-              Home
+              <span className={home ? "current" : ""}>Home</span>
             </Nav.Link>
             <NavDropdown title="Services" id="drop-down">
               <NavDropdown.Item href="#/search">Gyms</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Yoga 
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Yoga</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Meditation</NavDropdown.Item>
-              
-              <NavDropdown.Item href="#action/3.4">
-               Happiness
-              </NavDropdown.Item>
+
+              <NavDropdown.Item href="#action/3.4">Happiness</NavDropdown.Item>
             </NavDropdown>
             {!user && (
               <Nav.Link as={Link} to="/aboutUs">
-                Vison
+                <span className={vision ? "current" : ""}>Vision</span>
               </Nav.Link>
             )}
             {!user && (
               <Nav.Link as={Link} to="/login">
-                Login
+                <span className={login ? "current" : ""}>Login</span>
               </Nav.Link>
             )}
             {!user && (
               <Nav.Link as={Link} to="/signup">
-                Signup
+                <span className={signup ? "current" : ""}>Signup</span>
               </Nav.Link>
             )}
 
